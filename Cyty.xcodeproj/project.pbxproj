@@ -8,20 +8,40 @@
 
 /* Begin PBXBuildFile section */
 		D13E145E2208B59000EE7832 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13E145D2208B59000EE7832 /* AppDelegate.swift */; };
-		D13E14602208B59000EE7832 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13E145F2208B59000EE7832 /* ViewController.swift */; };
 		D13E14632208B59000EE7832 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D13E14612208B59000EE7832 /* Main.storyboard */; };
 		D13E14652208B59200EE7832 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D13E14642208B59200EE7832 /* Assets.xcassets */; };
 		D13E14682208B59200EE7832 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D13E14662208B59200EE7832 /* LaunchScreen.storyboard */; };
+		D13E14972208C73200EE7832 /* SupportedMarkets.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13E14962208C73200EE7832 /* SupportedMarkets.swift */; };
+		D13E149E2208CC5A00EE7832 /* Cyty.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D13E149C2208CC5900EE7832 /* Cyty.xcdatamodeld */; };
+		D13E14A02208E1D600EE7832 /* RequestsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13E149F2208E1D600EE7832 /* RequestsTableViewController.swift */; };
+		D13E14A22208E1FF00EE7832 /* JobsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13E14A12208E1FF00EE7832 /* JobsTableViewController.swift */; };
+		D13E14A42208E22600EE7832 /* RequestDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13E14A32208E22600EE7832 /* RequestDetailViewController.swift */; };
+		D13E14A62208E23700EE7832 /* JobsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13E14A52208E23700EE7832 /* JobsDetailViewController.swift */; };
+		D13E14A82208E25000EE7832 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13E14A72208E25000EE7832 /* MapViewController.swift */; };
+		D13E14AA2208E27600EE7832 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13E14A92208E27600EE7832 /* ListViewController.swift */; };
+		D13E14AD2208E2C100EE7832 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13E14AC2208E2C100EE7832 /* CoreDataStack.swift */; };
+		D13E14AF2208E77300EE7832 /* Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13E14AE2208E77300EE7832 /* Appearance.swift */; };
+		D13E14B12208E90A00EE7832 /* Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13E14B02208E90A00EE7832 /* Firebase.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		D13E145A2208B59000EE7832 /* Cyty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cyty.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D13E145D2208B59000EE7832 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D13E145F2208B59000EE7832 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		D13E14622208B59000EE7832 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D13E14642208B59200EE7832 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D13E14672208B59200EE7832 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D13E14692208B59300EE7832 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D13E14962208C73200EE7832 /* SupportedMarkets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportedMarkets.swift; sourceTree = "<group>"; };
+		D13E149D2208CC5900EE7832 /* Cyty.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Cyty.xcdatamodel; sourceTree = "<group>"; };
+		D13E149F2208E1D600EE7832 /* RequestsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestsTableViewController.swift; sourceTree = "<group>"; };
+		D13E14A12208E1FF00EE7832 /* JobsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobsTableViewController.swift; sourceTree = "<group>"; };
+		D13E14A32208E22600EE7832 /* RequestDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestDetailViewController.swift; sourceTree = "<group>"; };
+		D13E14A52208E23700EE7832 /* JobsDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobsDetailViewController.swift; sourceTree = "<group>"; };
+		D13E14A72208E25000EE7832 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		D13E14A92208E27600EE7832 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
+		D13E14AC2208E2C100EE7832 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		D13E14AE2208E77300EE7832 /* Appearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Appearance.swift; sourceTree = "<group>"; };
+		D13E14B02208E90A00EE7832 /* Firebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Firebase.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +74,88 @@
 		D13E145C2208B59000EE7832 /* Cyty */ = {
 			isa = PBXGroup;
 			children = (
-				D13E145D2208B59000EE7832 /* AppDelegate.swift */,
-				D13E145F2208B59000EE7832 /* ViewController.swift */,
-				D13E14612208B59000EE7832 /* Main.storyboard */,
+				D13E14752208B65000EE7832 /* Delegates */,
+				D13E14742208B62900EE7832 /* Resources */,
+				D13E14732208B60100EE7832 /* Model */,
+				D13E14722208B5FF00EE7832 /* Networking */,
+				D13E14AB2208E28B00EE7832 /* Controller */,
+				D13E14712208B5FE00EE7832 /* Views */,
+				D13E14702208B5F900EE7832 /* ViewControllers */,
+				D13E146F2208B5F700EE7832 /* Helpers */,
 				D13E14642208B59200EE7832 /* Assets.xcassets */,
-				D13E14662208B59200EE7832 /* LaunchScreen.storyboard */,
 				D13E14692208B59300EE7832 /* Info.plist */,
 			);
 			path = Cyty;
+			sourceTree = "<group>";
+		};
+		D13E146F2208B5F700EE7832 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				D13E14AE2208E77300EE7832 /* Appearance.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		D13E14702208B5F900EE7832 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				D13E149F2208E1D600EE7832 /* RequestsTableViewController.swift */,
+				D13E14A32208E22600EE7832 /* RequestDetailViewController.swift */,
+				D13E14A12208E1FF00EE7832 /* JobsTableViewController.swift */,
+				D13E14A52208E23700EE7832 /* JobsDetailViewController.swift */,
+				D13E14A72208E25000EE7832 /* MapViewController.swift */,
+				D13E14A92208E27600EE7832 /* ListViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		D13E14712208B5FE00EE7832 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		D13E14722208B5FF00EE7832 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				D13E14B02208E90A00EE7832 /* Firebase.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		D13E14732208B60100EE7832 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D13E14962208C73200EE7832 /* SupportedMarkets.swift */,
+				D13E149C2208CC5900EE7832 /* Cyty.xcdatamodeld */,
+				D13E14AC2208E2C100EE7832 /* CoreDataStack.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		D13E14742208B62900EE7832 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				D13E14612208B59000EE7832 /* Main.storyboard */,
+				D13E14662208B59200EE7832 /* LaunchScreen.storyboard */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		D13E14752208B65000EE7832 /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				D13E145D2208B59000EE7832 /* AppDelegate.swift */,
+			);
+			path = Delegates;
+			sourceTree = "<group>";
+		};
+		D13E14AB2208E28B00EE7832 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -135,8 +229,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D13E14602208B59000EE7832 /* ViewController.swift in Sources */,
+				D13E14A82208E25000EE7832 /* MapViewController.swift in Sources */,
+				D13E149E2208CC5A00EE7832 /* Cyty.xcdatamodeld in Sources */,
+				D13E14AA2208E27600EE7832 /* ListViewController.swift in Sources */,
 				D13E145E2208B59000EE7832 /* AppDelegate.swift in Sources */,
+				D13E14A02208E1D600EE7832 /* RequestsTableViewController.swift in Sources */,
+				D13E14AD2208E2C100EE7832 /* CoreDataStack.swift in Sources */,
+				D13E14B12208E90A00EE7832 /* Firebase.swift in Sources */,
+				D13E14A42208E22600EE7832 /* RequestDetailViewController.swift in Sources */,
+				D13E14AF2208E77300EE7832 /* Appearance.swift in Sources */,
+				D13E14A22208E1FF00EE7832 /* JobsTableViewController.swift in Sources */,
+				D13E14A62208E23700EE7832 /* JobsDetailViewController.swift in Sources */,
+				D13E14972208C73200EE7832 /* SupportedMarkets.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -336,6 +440,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		D13E149C2208CC5900EE7832 /* Cyty.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				D13E149D2208CC5900EE7832 /* Cyty.xcdatamodel */,
+			);
+			currentVersion = D13E149D2208CC5900EE7832 /* Cyty.xcdatamodel */;
+			path = Cyty.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = D13E14522208B59000EE7832 /* Project object */;
 }
