@@ -19,10 +19,15 @@ class CreateRequestMapViewController: UIViewController, CLLocationManagerDelegat
         self.mapController = MapController(mapView: self.mapView, jobLocations: nil)
         self.mapController?.openMapToUserLocation(mapView: self.mapView, userLocation: locationMgr.location?.coordinate)
         mapView.delegate = self
-        let gestureRecognizer = UILongPressGestureRecognizer(target: self, action: Selector(("addPin:")))
-        gestureRecognizer.numberOfTouchesRequired = 1
         
+        let gestureRecognizer = UILongPressGestureRecognizer(
+            target: self,
+            action: #selector(addPin(gestureRecognizer:)))
+        gestureRecognizer.numberOfTouchesRequired = 1
         mapView.addGestureRecognizer(gestureRecognizer)
+        
+        setViewForCreateButton()
+        
     }
     
     
@@ -65,10 +70,9 @@ class CreateRequestMapViewController: UIViewController, CLLocationManagerDelegat
         let currentLocation = locations.last! as CLLocation
         
         currentLocationPin = MKPointAnnotation()
+
         currentLocationPin?.coordinate = currentLocation.coordinate
         mapView.addAnnotation(currentLocationPin!)
-        
-        mapView(mapView, viewFor: currentLocationPin!)
         
         print("Current location: \(currentLocation)")
     }
@@ -95,6 +99,40 @@ class CreateRequestMapViewController: UIViewController, CLLocationManagerDelegat
         return nil
     }
     
+    @objc func addPin(gestureRecognizer: UIGestureRecognizer){
+        let touchPoint = gestureRecognizer.location(in: mapView)
+        let newCoordinates = mapView.convert(touchPoint, toCoordinateFrom: mapView)
+        
+        guard var currentLocationPin = currentLocationPin else {
+            print("Nothing in current location")
+            return
+        }
+
+        currentLocationPin.coordinate = newCoordinates
+        
+        if gestureRecognizer.state == UIGestureRecognizer.State.began {
+            currentLocationPin = MKPointAnnotation()
+            currentLocationPin.coordinate = newCoordinates
+            mapView.removeAnnotations(mapView.annotations)
+            mapView.addAnnotation(currentLocationPin)
+        } else if gestureRecognizer.state == UIGestureRecognizer.State.ended {
+            return
+        }
+    }
+    
+    // MARK: - Layout Methods
+    
+    func setViewForCreateButton() {
+        createButton.layer.cornerRadius = 24
+        viewForCreateButton.layer.cornerRadius = 24
+    }
+    
+    // MARK: - @IBAction Methods
+    
+    @IBAction func createButtonPressed(_ sender: Any) {
+        
+    }
+    
     override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent }
     
     var mapController: MapController?
@@ -103,5 +141,9 @@ class CreateRequestMapViewController: UIViewController, CLLocationManagerDelegat
     @IBOutlet weak var mapView: MKMapView!
     let locationMgr = CLLocationManager()
     
+    @IBOutlet weak var viewForCreateButton: UIView!
+    @IBOutlet weak var createButton: UIButton!
+    
+
     
 }

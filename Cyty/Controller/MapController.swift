@@ -27,7 +27,7 @@ class MapController {
         }
         
         let initialLocation = CLLocation(latitude: latitude, longitude: longitude)
-        let regionRadius: CLLocationDistance = 2000
+        let regionRadius: CLLocationDistance = 1000
         
         mapView.showsScale = true
         mapView.showsPointsOfInterest = true
