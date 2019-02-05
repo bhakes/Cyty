@@ -30,7 +30,7 @@
 		D13E14C1220958E400EE7832 /* CLLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13E14C0220958E400EE7832 /* CLLocationManager.swift */; };
 		D142ECE92209DCF200D85F8E /* User+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = D142ECE82209DCF200D85F8E /* User+Convenience.swift */; };
 		D142ECED2209E0CC00D85F8E /* CreateRequestMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D142ECEC2209E0CC00D85F8E /* CreateRequestMapViewController.swift */; };
-		D142ECEF220A010F00D85F8E /* CreateReqestsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D142ECEE220A010F00D85F8E /* CreateReqestsDetailViewController.swift */; };
+		D142ECEF220A010F00D85F8E /* CreateRequestsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D142ECEE220A010F00D85F8E /* CreateRequestsDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -59,7 +59,7 @@
 		D13E14C0220958E400EE7832 /* CLLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLLocationManager.swift; sourceTree = "<group>"; };
 		D142ECE82209DCF200D85F8E /* User+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+Convenience.swift"; sourceTree = "<group>"; };
 		D142ECEC2209E0CC00D85F8E /* CreateRequestMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRequestMapViewController.swift; sourceTree = "<group>"; };
-		D142ECEE220A010F00D85F8E /* CreateReqestsDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateReqestsDetailViewController.swift; sourceTree = "<group>"; };
+		D142ECEE220A010F00D85F8E /* CreateRequestsDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRequestsDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,7 +127,7 @@
 				D13E14A72208E25000EE7832 /* MapViewController.swift */,
 				D13E14A92208E27600EE7832 /* ListViewController.swift */,
 				D142ECEC2209E0CC00D85F8E /* CreateRequestMapViewController.swift */,
-				D142ECEE220A010F00D85F8E /* CreateReqestsDetailViewController.swift */,
+				D142ECEE220A010F00D85F8E /* CreateRequestsDetailViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -284,7 +284,7 @@
 				D13E14A82208E25000EE7832 /* MapViewController.swift in Sources */,
 				D13E14B32208EC2900EE7832 /* MapController.swift in Sources */,
 				D13E149E2208CC5A00EE7832 /* Cyty.xcdatamodeld in Sources */,
-				D142ECEF220A010F00D85F8E /* CreateReqestsDetailViewController.swift in Sources */,
+				D142ECEF220A010F00D85F8E /* CreateRequestsDetailViewController.swift in Sources */,
 				D13E14AA2208E27600EE7832 /* ListViewController.swift in Sources */,
 				D13E145E2208B59000EE7832 /* AppDelegate.swift in Sources */,
 				D13E14A02208E1D600EE7832 /* RequestsTableViewController.swift in Sources */,

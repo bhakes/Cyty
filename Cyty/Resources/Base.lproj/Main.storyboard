@@ -26,11 +26,12 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lrG-fB-tWH">
                                         <rect key="frame" x="0.0" y="0.0" width="240" height="60"/>
-                                        <color key="backgroundColor" red="0.71372549019999998" green="0.23529411759999999" blue="0.2274509804" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" red="0.0" green="0.56031829119999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
                                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal" title="Create Job"/>
                                         <connections>
+                                            <action selector="createButtonPressed:" destination="imC-7t-GvB" eventType="touchUpInside" id="nza-0J-swy"/>
                                             <segue destination="uUY-RX-Qti" kind="show" id="AJi-1i-4Gk"/>
                                         </connections>
                                     </button>
@@ -61,19 +62,19 @@
                     </view>
                     <navigationItem key="navigationItem" id="d8h-5U-nhn"/>
                     <connections>
-                        <outlet property="createButton" destination="lrG-fB-tWH" id="yC7-BJ-xcV"/>
+                        <outlet property="createButton" destination="lrG-fB-tWH" id="DpQ-xX-fAa"/>
                         <outlet property="mapView" destination="hH6-jV-Frf" id="WQq-s4-AVn"/>
                         <outlet property="viewForCreateButton" destination="i8x-hc-GB5" id="NpE-VH-KDr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LMJ-cj-917" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-394.39999999999998" y="1392.953523238381"/>
+            <point key="canvasLocation" x="-394" y="1379"/>
         </scene>
         <!--Create New Job-->
         <scene sceneID="15L-s6-RiX">
             <objects>
-                <viewController id="uUY-RX-Qti" customClass="CreateReqestsDetailViewController" customModule="Cyty" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="uUY-RX-Qti" customClass="CreateRequestsDetailViewController" customModule="Cyty" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="UKk-xJ-UAQ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -185,30 +186,34 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AgQ-L5-7wh">
-                                <rect key="frame" x="67.5" y="562" width="240" height="48"/>
-                                <color key="backgroundColor" red="0.0039215686269999999" green="0.34509803919999998" blue="0.21176470589999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KKR-dO-a29">
+                                <rect key="frame" x="127.5" y="550" width="120" height="48"/>
+                                <color key="backgroundColor" red="0.0" green="0.56031829119999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="240" id="x7t-o9-clN"/>
+                                    <constraint firstAttribute="width" constant="120" id="kuS-z9-BgK"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Create Job"/>
+                                <state key="normal" title="Submit"/>
+                                <connections>
+                                    <action selector="submitButtonClicked:" destination="uUY-RX-Qti" eventType="touchUpInside" id="hMm-3a-E1C"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="eMF-2R-M05" firstAttribute="leading" secondItem="hbc-fD-4Q5" secondAttribute="leading" constant="20" id="16O-uo-1i9"/>
+                            <constraint firstItem="hbc-fD-4Q5" firstAttribute="bottom" secondItem="KKR-dO-a29" secondAttribute="bottom" constant="20" id="7by-Pb-DGV"/>
+                            <constraint firstItem="KKR-dO-a29" firstAttribute="centerX" secondItem="UKk-xJ-UAQ" secondAttribute="centerX" id="Aew-7M-rhx"/>
                             <constraint firstItem="hbc-fD-4Q5" firstAttribute="trailing" secondItem="eMF-2R-M05" secondAttribute="trailing" constant="20" id="RKi-wC-CYe"/>
                             <constraint firstItem="eMF-2R-M05" firstAttribute="top" secondItem="hbc-fD-4Q5" secondAttribute="top" constant="20" id="Vk3-0G-ivs"/>
-                            <constraint firstItem="AgQ-L5-7wh" firstAttribute="centerX" secondItem="UKk-xJ-UAQ" secondAttribute="centerX" id="hiY-kE-yPK"/>
-                            <constraint firstItem="hbc-fD-4Q5" firstAttribute="bottom" secondItem="AgQ-L5-7wh" secondAttribute="bottom" constant="8" id="ogN-r0-Gvb"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="hbc-fD-4Q5"/>
                     </view>
                     <navigationItem key="navigationItem" title="Create New Job" id="n06-Hn-Rfx"/>
                     <connections>
-                        <outlet property="mapView" destination="Exd-pd-Tdj" id="7Hp-Ku-TmT"/>
+                        <outlet property="mapView" destination="Exd-pd-Tdj" id="lav-FD-ONw"/>
+                        <outlet property="submitButton" destination="KKR-dO-a29" id="eU5-US-Mj6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qVn-Rz-Lbr" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -26,8 +26,12 @@ class CreateRequestMapViewController: UIViewController, CLLocationManagerDelegat
         gestureRecognizer.numberOfTouchesRequired = 1
         mapView.addGestureRecognizer(gestureRecognizer)
         
-        setViewForCreateButton()
         
+        
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setViewForCreateButton()
     }
     
     
@@ -37,6 +41,13 @@ class CreateRequestMapViewController: UIViewController, CLLocationManagerDelegat
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+        
+        guard let destination = segue.destination as? CreateRequestsDetailViewController
+            else { return }
+        
+        destination.currentLocationPin = currentLocationPin
+        
+        
     }
     
     
