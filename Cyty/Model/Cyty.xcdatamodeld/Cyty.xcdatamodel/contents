@@ -5,14 +5,14 @@
         <attribute name="accepterID" optional="YES" attributeType="UUID" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="jobID" optional="YES" attributeType="UUID" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="otherNotes" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="jobAcceptance" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="jobAcceptance" inverseEntity="User" syncable="YES"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="jobAcceptance" inverseEntity="User" syncable="YES"/>
     </entity>
     <entity name="JobCancellation" representedClassName="JobCancellation" syncable="YES" codeGenerationType="class">
         <attribute name="cancellationTime" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="cancellerID" optional="YES" attributeType="UUID" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="explanation" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="jobID" optional="YES" attributeType="UUID" usesScalarValueType="NO" syncable="YES"/>
-        <relationship name="jobCancellation" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="jobCancellation" inverseEntity="User" syncable="YES"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="jobCancellation" inverseEntity="User" syncable="YES"/>
     </entity>
     <entity name="JobFulfillment" representedClassName="JobFulfillment" syncable="YES" codeGenerationType="class">
         <attribute name="fulfillerID" optional="YES" attributeType="String" syncable="YES"/>
@@ -20,7 +20,7 @@
         <attribute name="jobID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="notes" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="picture" optional="YES" attributeType="Transformable" syncable="YES"/>
-        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" syncable="YES"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="jobFulfillment" inverseEntity="User" syncable="YES"/>
     </entity>
     <entity name="JobRequest" representedClassName="JobRequest" syncable="YES" codeGenerationType="class">
         <attribute name="bounty" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
@@ -37,30 +37,30 @@
         <attribute name="verificationID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="verificationTime" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="verifierID" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" syncable="YES"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="jobVerification" inverseEntity="User" syncable="YES"/>
     </entity>
     <entity name="User" representedClassName="User" syncable="YES" codeGenerationType="class">
         <attribute name="accountBalance" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="email" attributeType="String" syncable="YES"/>
         <attribute name="firstName" attributeType="String" syncable="YES"/>
-        <attribute name="homeCity" attributeType="String" syncable="YES"/>
+        <attribute name="homeCity" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="jobberRating" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="lastName" attributeType="String" syncable="YES"/>
         <attribute name="location" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="password" attributeType="String" syncable="YES"/>
-        <attribute name="userID" attributeType="String" syncable="YES"/>
-        <relationship name="jobAcceptance" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="JobAcceptance" inverseName="jobAcceptance" inverseEntity="JobAcceptance" syncable="YES"/>
-        <relationship name="jobCancellation" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="JobCancellation" inverseName="jobCancellation" inverseEntity="JobCancellation" syncable="YES"/>
-        <relationship name="jobFulfillment" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="JobFulfillment" syncable="YES"/>
+        <attribute name="userID" attributeType="UUID" usesScalarValueType="NO" syncable="YES"/>
+        <relationship name="jobAcceptance" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="JobAcceptance" inverseName="user" inverseEntity="JobAcceptance" syncable="YES"/>
+        <relationship name="jobCancellation" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="JobCancellation" inverseName="user" inverseEntity="JobCancellation" syncable="YES"/>
+        <relationship name="jobFulfillment" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="JobFulfillment" inverseName="user" inverseEntity="JobFulfillment" syncable="YES"/>
         <relationship name="jobRequest" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="JobRequest" inverseName="user" inverseEntity="JobRequest" syncable="YES"/>
-        <relationship name="jobVerification" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="JobVerification" syncable="YES"/>
+        <relationship name="jobVerification" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="JobVerification" inverseName="user" inverseEntity="JobVerification" syncable="YES"/>
     </entity>
     <elements>
-        <element name="User" positionX="-167.078125" positionY="-508.76953125" width="128" height="253"/>
-        <element name="JobRequest" positionX="40.8359375" positionY="-351.546875" width="128" height="148"/>
-        <element name="JobVerification" positionX="-49.42578125" positionY="75.625" width="128" height="133"/>
         <element name="JobAcceptance" positionX="60.0234375" positionY="-478.1328125" width="128" height="118"/>
         <element name="JobCancellation" positionX="-149.0859375" positionY="-150.24609375" width="128" height="118"/>
         <element name="JobFulfillment" positionX="22.59375" positionY="-144.44140625" width="128" height="133"/>
+        <element name="JobRequest" positionX="40.8359375" positionY="-351.546875" width="128" height="148"/>
+        <element name="JobVerification" positionX="-49.42578125" positionY="75.625" width="128" height="133"/>
+        <element name="User" positionX="-167.078125" positionY="-508.76953125" width="128" height="255"/>
     </elements>
 </model>

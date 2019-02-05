@@ -22,6 +22,14 @@
 		D13E14AD2208E2C100EE7832 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13E14AC2208E2C100EE7832 /* CoreDataStack.swift */; };
 		D13E14AF2208E77300EE7832 /* Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13E14AE2208E77300EE7832 /* Appearance.swift */; };
 		D13E14B12208E90A00EE7832 /* Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13E14B02208E90A00EE7832 /* Firebase.swift */; };
+		D13E14B32208EC2900EE7832 /* MapController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13E14B22208EC2900EE7832 /* MapController.swift */; };
+		D13E14B82208F3DF00EE7832 /* CustomAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13E14B72208F3DF00EE7832 /* CustomAnnotationView.swift */; };
+		D13E14BA2208F63A00EE7832 /* JobLocations.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13E14B92208F63A00EE7832 /* JobLocations.swift */; };
+		D13E14BC2208F72F00EE7832 /* JobLocations+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13E14BB2208F72F00EE7832 /* JobLocations+Extension.swift */; };
+		D13E14BE2209149C00EE7832 /* SampleGeoJSON.geojson in Resources */ = {isa = PBXBuildFile; fileRef = D13E14B42208F1E200EE7832 /* SampleGeoJSON.geojson */; };
+		D13E14C1220958E400EE7832 /* CLLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13E14C0220958E400EE7832 /* CLLocationManager.swift */; };
+		D142ECE92209DCF200D85F8E /* User+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = D142ECE82209DCF200D85F8E /* User+Convenience.swift */; };
+		D142ECED2209E0CC00D85F8E /* CreateRequestMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D142ECEC2209E0CC00D85F8E /* CreateRequestMapViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +50,14 @@
 		D13E14AC2208E2C100EE7832 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		D13E14AE2208E77300EE7832 /* Appearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Appearance.swift; sourceTree = "<group>"; };
 		D13E14B02208E90A00EE7832 /* Firebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Firebase.swift; sourceTree = "<group>"; };
+		D13E14B22208EC2900EE7832 /* MapController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapController.swift; sourceTree = "<group>"; };
+		D13E14B42208F1E200EE7832 /* SampleGeoJSON.geojson */ = {isa = PBXFileReference; lastKnownFileType = text; path = SampleGeoJSON.geojson; sourceTree = "<group>"; };
+		D13E14B72208F3DF00EE7832 /* CustomAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAnnotationView.swift; sourceTree = "<group>"; };
+		D13E14B92208F63A00EE7832 /* JobLocations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobLocations.swift; sourceTree = "<group>"; };
+		D13E14BB2208F72F00EE7832 /* JobLocations+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JobLocations+Extension.swift"; sourceTree = "<group>"; };
+		D13E14C0220958E400EE7832 /* CLLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLLocationManager.swift; sourceTree = "<group>"; };
+		D142ECE82209DCF200D85F8E /* User+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+Convenience.swift"; sourceTree = "<group>"; };
+		D142ECEC2209E0CC00D85F8E /* CreateRequestMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRequestMapViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +90,9 @@
 		D13E145C2208B59000EE7832 /* Cyty */ = {
 			isa = PBXGroup;
 			children = (
+				D13E14BF220958A200EE7832 /* CoreLocation */,
+				D13E14B62208F3A400EE7832 /* Mapping */,
+				D13E14B52208F20D00EE7832 /* SampleData */,
 				D13E14752208B65000EE7832 /* Delegates */,
 				D13E14742208B62900EE7832 /* Resources */,
 				D13E14732208B60100EE7832 /* Model */,
@@ -105,6 +124,7 @@
 				D13E14A52208E23700EE7832 /* JobsDetailViewController.swift */,
 				D13E14A72208E25000EE7832 /* MapViewController.swift */,
 				D13E14A92208E27600EE7832 /* ListViewController.swift */,
+				D142ECEC2209E0CC00D85F8E /* CreateRequestMapViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -130,6 +150,9 @@
 				D13E14962208C73200EE7832 /* SupportedMarkets.swift */,
 				D13E149C2208CC5900EE7832 /* Cyty.xcdatamodeld */,
 				D13E14AC2208E2C100EE7832 /* CoreDataStack.swift */,
+				D13E14B92208F63A00EE7832 /* JobLocations.swift */,
+				D13E14BB2208F72F00EE7832 /* JobLocations+Extension.swift */,
+				D142ECE82209DCF200D85F8E /* User+Convenience.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -154,8 +177,33 @@
 		D13E14AB2208E28B00EE7832 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				D13E14B22208EC2900EE7832 /* MapController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		D13E14B52208F20D00EE7832 /* SampleData */ = {
+			isa = PBXGroup;
+			children = (
+				D13E14B42208F1E200EE7832 /* SampleGeoJSON.geojson */,
+			);
+			path = SampleData;
+			sourceTree = "<group>";
+		};
+		D13E14B62208F3A400EE7832 /* Mapping */ = {
+			isa = PBXGroup;
+			children = (
+				D13E14B72208F3DF00EE7832 /* CustomAnnotationView.swift */,
+			);
+			path = Mapping;
+			sourceTree = "<group>";
+		};
+		D13E14BF220958A200EE7832 /* CoreLocation */ = {
+			isa = PBXGroup;
+			children = (
+				D13E14C0220958E400EE7832 /* CLLocationManager.swift */,
+			);
+			path = CoreLocation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -216,6 +264,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D13E14BE2209149C00EE7832 /* SampleGeoJSON.geojson in Resources */,
 				D13E14682208B59200EE7832 /* LaunchScreen.storyboard in Resources */,
 				D13E14652208B59200EE7832 /* Assets.xcassets in Resources */,
 				D13E14632208B59000EE7832 /* Main.storyboard in Resources */,
@@ -230,16 +279,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				D13E14A82208E25000EE7832 /* MapViewController.swift in Sources */,
+				D13E14B32208EC2900EE7832 /* MapController.swift in Sources */,
 				D13E149E2208CC5A00EE7832 /* Cyty.xcdatamodeld in Sources */,
 				D13E14AA2208E27600EE7832 /* ListViewController.swift in Sources */,
 				D13E145E2208B59000EE7832 /* AppDelegate.swift in Sources */,
 				D13E14A02208E1D600EE7832 /* RequestsTableViewController.swift in Sources */,
 				D13E14AD2208E2C100EE7832 /* CoreDataStack.swift in Sources */,
+				D142ECED2209E0CC00D85F8E /* CreateRequestMapViewController.swift in Sources */,
 				D13E14B12208E90A00EE7832 /* Firebase.swift in Sources */,
+				D142ECE92209DCF200D85F8E /* User+Convenience.swift in Sources */,
+				D13E14BA2208F63A00EE7832 /* JobLocations.swift in Sources */,
+				D13E14C1220958E400EE7832 /* CLLocationManager.swift in Sources */,
 				D13E14A42208E22600EE7832 /* RequestDetailViewController.swift in Sources */,
+				D13E14BC2208F72F00EE7832 /* JobLocations+Extension.swift in Sources */,
 				D13E14AF2208E77300EE7832 /* Appearance.swift in Sources */,
 				D13E14A22208E1FF00EE7832 /* JobsTableViewController.swift in Sources */,
 				D13E14A62208E23700EE7832 /* JobsDetailViewController.swift in Sources */,
+				D13E14B82208F3DF00EE7832 /* CustomAnnotationView.swift in Sources */,
 				D13E14972208C73200EE7832 /* SupportedMarkets.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

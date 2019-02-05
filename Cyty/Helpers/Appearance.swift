@@ -16,6 +16,7 @@ struct Appearance {
         UINavigationBar.appearance().titleTextAttributes = [ .foregroundColor: UIColor.accentColor]
         UINavigationBar.appearance().prefersLargeTitles = true
         UINavigationBar.appearance().isTranslucent = false
+        
     }
     
     static func setupSegmentedControlAppearance() {

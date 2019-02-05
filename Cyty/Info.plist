@@ -41,5 +41,7 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>In order to use the features of this application, the application needs access to your location. Your location data will never been shared with third-parties without your approval.</string>
 </dict>
 </plist>
