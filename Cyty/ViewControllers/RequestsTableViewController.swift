@@ -14,15 +14,7 @@ class RequestsTableViewController: UITableViewController, NSFetchedResultsContro
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        
-        let refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action: #selector(refresh(_:)), for: .valueChanged)
-        self.refreshControl = refreshControl
-        
         user = User(firstName: "Bob", lastName: "Smith", email: "bob@aol.com", userID: UUID(uuidString:"CCB19A72-A4CA-4BF4-8E3F-22B195E906F7")!)
-        guard let userID = user?.userID else {fatalError("error unwrapping userID")}
-        jobController.refreshJobsFromServer(with: userID)
         
         refresh(nil)
     }
@@ -31,29 +23,15 @@ class RequestsTableViewController: UITableViewController, NSFetchedResultsContro
     
     @IBAction func refresh(_ sender: Any?) {
         
-        let fetch = NSFetchRequest<NSFetchRequestResult>(entityName: "JobRequest")
-        let request = NSBatchDeleteRequest(fetchRequest: fetch)
-        do {
-            _ = try CoreDataStack.shared.mainContext.execute(request)
-            try CoreDataStack.shared.mainContext.save()
-        } catch {
-            print("error removing old CoreData content")
-        }
-        
-        
-        refreshControl?.beginRefreshing()
         guard let userID = user?.userID else {fatalError("error unwrapping userID")}
         jobController.refreshJobsFromServer(with: userID) { error in
             if let error = error {
                 NSLog("Error refreshing changes from server: \(error)")
                 return
             }
-            self.fetchedResultsController = self.makeFetchedResultsController()
             
             DispatchQueue.main.async {
                 self.tableView.reloadData()
-                self.refreshControl?.endRefreshing()
-                
             }
         }
     }
@@ -63,25 +41,31 @@ class RequestsTableViewController: UITableViewController, NSFetchedResultsContro
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return fetchedResultsController.sections?[section].name
     }
-    
+
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return fetchedResultsController.sections?.count ?? 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         return fetchedResultsController.sections?[section].numberOfObjects ?? 0
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "RequestsCell", for: indexPath) as? RequestsTableViewCell else { fatalError("Unable to Dequeue cell as ") }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "RequestCell", for: indexPath) as? RequestsTableViewCell else { fatalError("Unable to Dequeue cell as RequestsTableViewCell") }
         
         let jobRequest = fetchedResultsController.object(at: indexPath)
         cell.detailTextLabel?.text = "$\(jobRequest.bounty)"
         cell.textLabel?.text = jobRequest.title
         
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            
+            let jobRequest = fetchedResultsController.object(at: indexPath)
+            jobController.deleteJobRequest(for: jobRequest)
+        }
     }
 
 
@@ -150,20 +134,23 @@ class RequestsTableViewController: UITableViewController, NSFetchedResultsContro
     
     let jobController = JobController()
     
-    lazy var fetchedResultsController: NSFetchedResultsController<JobRequest> =  makeFetchedResultsController()
-    
-    private func makeFetchedResultsController() -> NSFetchedResultsController<JobRequest> {
+    lazy var fetchedResultsController: NSFetchedResultsController<JobRequest> = {
+        
         let fetchRequest: NSFetchRequest<JobRequest> = JobRequest.fetchRequest()
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "requestTime", ascending: false)]
         
         let moc = CoreDataStack.shared.mainContext
-        moc.reset()
-        let frc = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: moc, sectionNameKeyPath: "title", cacheName: nil)
+        
+        let frc = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: moc, sectionNameKeyPath: "status", cacheName: nil)
         
         frc.delegate = self
         
-        try! frc.performFetch()
+        do {
+            try frc.performFetch()
+        } catch {
+            print("Failed to perform fetch on Core Data")
+        }
         
         return frc
-    }
+    }()
 }

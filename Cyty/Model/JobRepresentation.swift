@@ -21,6 +21,7 @@ struct JobRepresentation: Decodable {
     var  requesterID: UUID?
     var  requestTime: Date?
     var  title: String?
+    var  status: String?
 
 }
 

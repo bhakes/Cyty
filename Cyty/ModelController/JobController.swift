@@ -77,22 +77,16 @@ class JobController {
             }.resume()
     }
     
-    func fetchJobRequestsFromServer(with userID: UUID, completion: @escaping (([JobRepresentation]?, Error?) -> Void) = { _,_ in }) {
+    func fetchJobRequestsFromServer(for fetchType: FetchType, with userID: UUID, completion: @escaping (([JobRepresentation]?, Error?) -> Void) = { _,_ in }) {
 
         // build the filtered endpoint request
-        var urlComponents = URLComponents()
-        urlComponents.scheme = "https"
-        urlComponents.host = "new-project-69d95.firebaseio.com"
-        urlComponents.path = "/JobRequests/.json"
-        urlComponents.queryItems = [
-            URLQueryItem(name: "orderBy", value: "requesterID"),
-            URLQueryItem(name: "equalTo", value: userID.uuidString)
-        ]
+        
+        let urlComponents = createURLComponents(for: fetchType, with: userID)
+    
         guard let requestURL = urlComponents.url else {
             print("Error forming URL")
             return
         }
-        print(requestURL)
         
         URLSession.shared.dataTask(with: requestURL) { (data, _, error) in
 
@@ -121,7 +115,7 @@ class JobController {
 
     
     func refreshJobsFromServer(with userID: UUID,completion: @escaping ((Error?) -> Void) = { _ in }) {
-        fetchJobRequestsFromServer(with: userID) { (representations, error) in
+        fetchJobRequestsFromServer(for: .JobsRequestedByUser, with: userID) { (representations, error) in
             if error != nil { return }
             guard let representations = representations else { return }
             let moc = CoreDataStack.shared.container.newBackgroundContext()
@@ -154,6 +148,33 @@ class JobController {
         }
     }
     
+    func createURLComponents(for fetchType: FetchType, with userID: UUID) -> URLComponents{
+        switch fetchType {
+        case .JobsRequestedByUser :
+            var urlComponents = URLComponents()
+            urlComponents.scheme = "https"
+            urlComponents.host = "new-project-69d95.firebaseio.com"
+            urlComponents.path = "/JobRequest/.json"
+            
+            urlComponents.queryItems = [
+                URLQueryItem(name: "orderBy", value: "\"requesterID\""),
+                URLQueryItem(name: "equalTo", value: "\"\(userID.uuidString)\"")
+            ]
+            return urlComponents
+        
+        case .JobsAvailableForUser :
+            var urlComponents = URLComponents()
+            urlComponents.scheme = "https"
+            urlComponents.host = "new-project-69d95.firebaseio.com"
+            urlComponents.path = "/JobRequest/.json"
+            
+            return urlComponents
+        }
+        
+        
+        
+    }
+    
     
     func saveToPersistentStore() {
         do {
@@ -164,4 +185,9 @@ class JobController {
     }
     
     private var importer: CoreDataImporter?
+}
+
+enum FetchType: String, Codable {
+    case JobsRequestedByUser
+    case JobsAvailableForUser
 }

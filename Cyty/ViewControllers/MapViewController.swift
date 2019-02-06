@@ -14,18 +14,22 @@ class MapViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        user = User(firstName: "Bob", lastName: "Smith", email: "bob@aol.com")
+        guard let userID = user?.userID else {fatalError("Could not get user's id")}
+            jobController.fetchJobRequestsFromServer(for: .JobsAvailableForUser, with: userID) { ([JobRepresentation]?, error) in
+            self.mapView = self.mapController?.addJobLocationsToMap(jobRequests: self.jobLocations)
+        }
         // Do any additional setup after loading the view.
         JobLocations.fetch { (geoJSON, error) in
             self.jobLocations = geoJSON
             self.mapController = MapController(mapView: self.mapView, jobLocations: self.jobLocations)
-            self.mapView = self.mapController?.addJobLocationsToMap(jobLocations: self.jobLocations)
+            
             self.mapController?.openMapToUserLocation(mapView: self.mapView, userLocation: nil)
         }
+
         
-        user = User(firstName: "Bob", lastName: "Smith", email: "bob@aol.com")
         
     }
-    
 
     // MARK: - Navigation
 
@@ -38,6 +42,7 @@ class MapViewController: UIViewController {
     override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent }
     
     var mapController: MapController?
+    var jobController: JobController = JobController()
     var jobLocations: JobLocations?
     @IBOutlet weak var mapView: MKMapView!
     var user: User?

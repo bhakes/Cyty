@@ -43,22 +43,22 @@ class MapController {
         centerMapOnLocation(location: initialLocation)
     }
     
-    func addJobLocationsToMap(jobLocations: JobLocations?) -> MKMapView {
+    func addJobLocationsToMap(jobRequests: [JobRequest]?) -> MKMapView {
         
         // unwrap the map
         guard let mapView = mapView else {
             print("Did not safely unwrap the map")
             fatalError("No MapView to Return")
         }
-        guard let mapJobs = jobLocations?.features else {
-            print("No jobs to map")
+        
+        guard let jobRequests = jobRequests else {
             return mapView
         }
         
-        for job in mapJobs {
+        for job in jobRequests {
             let annotation = MKPointAnnotation()
-            let lat = job.geometry.coordinates[1]
-            let long = job.geometry.coordinates[0]
+            let lat = job.latitude
+            let long = job.longitude
             annotation.coordinate = CLLocationCoordinate2D(latitude: lat, longitude: long)
             mapView.addAnnotation(annotation)
         }

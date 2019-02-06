@@ -24,6 +24,7 @@ extension JobRequest: Encodable {
         try container.encode(jobCancellationID, forKey: .jobCancellationID)
         try container.encode(latitude, forKey: .latitude)
         try container.encode(longitude, forKey: .longitude)
+        try container.encode(status, forKey: .status)
     }
     
     enum CodingKeys: String, CodingKey {
@@ -39,6 +40,7 @@ extension JobRequest: Encodable {
         case jobCancellationID
         case latitude
         case longitude
+        case status
     }
     
 }

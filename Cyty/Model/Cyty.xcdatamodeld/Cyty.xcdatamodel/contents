@@ -33,10 +33,11 @@
         <attribute name="jobFulfillmentID" optional="YES" attributeType="UUID" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="jobID" attributeType="UUID" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="jobVerificationID" optional="YES" attributeType="UUID" usesScalarValueType="NO" syncable="YES"/>
-        <attribute name="latitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="latitude" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="longitude" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="requesterID" attributeType="UUID" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="requestTime" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="status" attributeType="String" syncable="YES"/>
         <attribute name="title" attributeType="String" syncable="YES"/>
         <relationship name="jobAcceptance" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="JobAcceptance" inverseName="jobRequest" inverseEntity="JobAcceptance" syncable="YES"/>
         <relationship name="jobCancellation" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="JobCancellation" inverseName="jobRequest" inverseEntity="JobCancellation" syncable="YES"/>
@@ -73,7 +74,7 @@
         <element name="JobAcceptance" positionX="265.609375" positionY="-148.37890625" width="128" height="133"/>
         <element name="JobCancellation" positionX="222.2890625" positionY="27.7265625" width="128" height="133"/>
         <element name="JobFulfillment" positionX="178.828125" positionY="231.4296875" width="128" height="148"/>
-        <element name="JobRequest" positionX="-71.3671875" positionY="-407.54296875" width="128" height="298"/>
+        <element name="JobRequest" positionX="-71.3671875" positionY="-407.54296875" width="128" height="313"/>
         <element name="JobVerification" positionX="137.30078125" positionY="429.51171875" width="128" height="148"/>
         <element name="User" positionX="-239.75" positionY="142.09765625" width="128" height="253"/>
     </elements>
