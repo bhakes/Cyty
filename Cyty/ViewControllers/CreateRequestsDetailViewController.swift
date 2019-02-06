@@ -20,23 +20,17 @@ class CreateRequestsDetailViewController: UIViewController, CLLocationManagerDel
         self.mapController?.openMapToUserLocation(mapView: mapView, userLocation: currentLocationPin?.coordinate)
         
         mapView.delegate = self
-        setViewForSubmitButton()
+        
         guard let currentLocationPin = currentLocationPin else { return }
         mapView.addAnnotation(currentLocationPin)
-        
+        user = User(firstName: "Bob", lastName: "Smith", email: "bob@aol.com")
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        setViewForSubmitButton()
     }
-    */
-    
+
     // MARK: - Movable Pin Methods
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
@@ -64,15 +58,36 @@ class CreateRequestsDetailViewController: UIViewController, CLLocationManagerDel
     // MARK: - @IBAction Methods
     
     @IBAction func submitButtonClicked(_ sender: Any) {
-        print("submit to job to server")
+        
+        guard let title = titleTextField.text,
+            let bounty = bountyTextField.text,
+            let coordinates = currentLocationPin?.coordinate,
+            title != "",
+            bounty != "" else { return }
+       
+        guard let userID = user?.userID else { fatalError("Lost track of the current user") }
+        
+        let newRequest = JobRequest(title: title, jobDescription: jobDescriptionTextView.text, bounty: Double(bounty) ?? 0.0, requesterID: userID, latitude: coordinates.latitude, longitude: coordinates.longitude)
+        
+        jobController.createJobRequest(for: newRequest)
+        
+        
+        titleTextField.text = ""
+        navigationController?.popViewController(animated: true)
         
     }
     
-
-    
     // MARK: - Properties
     var mapController: MapController?
+    let jobController: JobController = JobController()
+    var user: User?
     var currentLocationPin: MKPointAnnotation?
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var submitButton: UIButton!
+    @IBOutlet weak var locationTextField: UITextField!
+    @IBOutlet weak var titleTextField: UITextField!
+    @IBOutlet weak var jobDescriptionTextView: UITextView!
+    @IBOutlet weak var jobTypeTextField: UITextField!
+    @IBOutlet weak var bountyTextField: UITextField!
+    
 }

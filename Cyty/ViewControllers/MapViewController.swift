@@ -22,7 +22,7 @@ class MapViewController: UIViewController {
             self.mapController?.openMapToUserLocation(mapView: self.mapView, userLocation: nil)
         }
         
-        
+        user = User(firstName: "Bob", lastName: "Smith", email: "bob@aol.com")
         
     }
     
@@ -40,6 +40,7 @@ class MapViewController: UIViewController {
     var mapController: MapController?
     var jobLocations: JobLocations?
     @IBOutlet weak var mapView: MKMapView!
+    var user: User?
     
     
 }

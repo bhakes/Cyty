@@ -31,6 +31,9 @@
 		D142ECE92209DCF200D85F8E /* User+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = D142ECE82209DCF200D85F8E /* User+Convenience.swift */; };
 		D142ECED2209E0CC00D85F8E /* CreateRequestMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D142ECEC2209E0CC00D85F8E /* CreateRequestMapViewController.swift */; };
 		D142ECEF220A010F00D85F8E /* CreateRequestsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D142ECEE220A010F00D85F8E /* CreateRequestsDetailViewController.swift */; };
+		D142ECF2220A294000D85F8E /* JobController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D142ECF1220A294000D85F8E /* JobController.swift */; };
+		D142ECF4220A2A9200D85F8E /* JobRequest+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = D142ECF3220A2A9200D85F8E /* JobRequest+Convenience.swift */; };
+		D142ECF6220A2E4000D85F8E /* JobRequest+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D142ECF5220A2E4000D85F8E /* JobRequest+Codable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +63,9 @@
 		D142ECE82209DCF200D85F8E /* User+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+Convenience.swift"; sourceTree = "<group>"; };
 		D142ECEC2209E0CC00D85F8E /* CreateRequestMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRequestMapViewController.swift; sourceTree = "<group>"; };
 		D142ECEE220A010F00D85F8E /* CreateRequestsDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRequestsDetailViewController.swift; sourceTree = "<group>"; };
+		D142ECF1220A294000D85F8E /* JobController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobController.swift; sourceTree = "<group>"; };
+		D142ECF3220A2A9200D85F8E /* JobRequest+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JobRequest+Convenience.swift"; sourceTree = "<group>"; };
+		D142ECF5220A2E4000D85F8E /* JobRequest+Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JobRequest+Codable.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +103,7 @@
 				D13E14B52208F20D00EE7832 /* SampleData */,
 				D13E14752208B65000EE7832 /* Delegates */,
 				D13E14742208B62900EE7832 /* Resources */,
+				D142ECF0220A290500D85F8E /* ModelController */,
 				D13E14732208B60100EE7832 /* Model */,
 				D13E14722208B5FF00EE7832 /* Networking */,
 				D13E14AB2208E28B00EE7832 /* Controller */,
@@ -156,6 +163,8 @@
 				D13E14B92208F63A00EE7832 /* JobLocations.swift */,
 				D13E14BB2208F72F00EE7832 /* JobLocations+Extension.swift */,
 				D142ECE82209DCF200D85F8E /* User+Convenience.swift */,
+				D142ECF3220A2A9200D85F8E /* JobRequest+Convenience.swift */,
+				D142ECF5220A2E4000D85F8E /* JobRequest+Codable.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -207,6 +216,14 @@
 				D13E14C0220958E400EE7832 /* CLLocationManager.swift */,
 			);
 			path = CoreLocation;
+			sourceTree = "<group>";
+		};
+		D142ECF0220A290500D85F8E /* ModelController */ = {
+			isa = PBXGroup;
+			children = (
+				D142ECF1220A294000D85F8E /* JobController.swift */,
+			);
+			path = ModelController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -292,6 +309,7 @@
 				D142ECED2209E0CC00D85F8E /* CreateRequestMapViewController.swift in Sources */,
 				D13E14B12208E90A00EE7832 /* Firebase.swift in Sources */,
 				D142ECE92209DCF200D85F8E /* User+Convenience.swift in Sources */,
+				D142ECF4220A2A9200D85F8E /* JobRequest+Convenience.swift in Sources */,
 				D13E14BA2208F63A00EE7832 /* JobLocations.swift in Sources */,
 				D13E14C1220958E400EE7832 /* CLLocationManager.swift in Sources */,
 				D13E14A42208E22600EE7832 /* RequestDetailViewController.swift in Sources */,
@@ -299,7 +317,9 @@
 				D13E14AF2208E77300EE7832 /* Appearance.swift in Sources */,
 				D13E14A22208E1FF00EE7832 /* JobsTableViewController.swift in Sources */,
 				D13E14A62208E23700EE7832 /* JobsDetailViewController.swift in Sources */,
+				D142ECF2220A294000D85F8E /* JobController.swift in Sources */,
 				D13E14B82208F3DF00EE7832 /* CustomAnnotationView.swift in Sources */,
+				D142ECF6220A2E4000D85F8E /* JobRequest+Codable.swift in Sources */,
 				D13E14972208C73200EE7832 /* SupportedMarkets.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

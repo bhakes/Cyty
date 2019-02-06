@@ -14,11 +14,7 @@ class JobsTableViewController: UITableViewController, NSFetchedResultsController
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        user = User(firstName: "Bob", lastName: "Smith", email: "bob@aol.com")
     }
 
     // MARK: - Table view data source
@@ -99,7 +95,9 @@ class JobsTableViewController: UITableViewController, NSFetchedResultsController
     }
     
     // MARK: - Properties
-
+    
+    var user: User?
+    
 //    lazy var fetchedResultsController: NSFetchedResultsController<User> = {
 ////        let frc = CoreDataStack.shared.makeNewFetchedResultsController()
 ////        if let priority = currentPriority {
@@ -110,5 +108,5 @@ class JobsTableViewController: UITableViewController, NSFetchedResultsController
 ////        try? frc.performFetch()
 ////        return frc
 //    }()
-
+    
 }
