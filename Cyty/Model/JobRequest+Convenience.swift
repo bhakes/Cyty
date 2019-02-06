@@ -39,4 +39,26 @@ extension JobRequest {
         self.longitude = longitude
         
     }
+    
+    
+    convenience init?(jobRepresentation: JobRepresentation, context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
+        
+        
+       guard let jobAcceptanceID = jobRepresentation.jobAcceptanceID,
+       let jobCancellationID = jobRepresentation.jobCancellationID,
+       let jobDescription = jobRepresentation.jobDescription,
+       let jobFulfillmentID = jobRepresentation.jobFulfillmentID,
+       let jobID = jobRepresentation.jobID,
+       let jobVerificationID = jobRepresentation.jobVerificationID,
+       let requesterID  = jobRepresentation.requesterID,
+       let requestTime = jobRepresentation.requestTime,
+       let title = jobRepresentation.title else { return nil }
+        
+        let latitude = jobRepresentation.latitude
+        let longitude  = jobRepresentation.longitude
+        let bounty = jobRepresentation.bounty
+
+        self.init(jobID: jobID, title: title, jobDescription: jobDescription, bounty: bounty, requesterID: requesterID, requestTime: requestTime, latitude: latitude, longitude: longitude, jobAcceptanceID: jobAcceptanceID, jobFulfillmentID: jobFulfillmentID, jobCancellationID: jobCancellationID, jobVerificationID: jobVerificationID)
+    }
+    
 }

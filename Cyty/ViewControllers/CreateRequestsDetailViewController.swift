@@ -23,7 +23,7 @@ class CreateRequestsDetailViewController: UIViewController, CLLocationManagerDel
         
         guard let currentLocationPin = currentLocationPin else { return }
         mapView.addAnnotation(currentLocationPin)
-        user = User(firstName: "Bob", lastName: "Smith", email: "bob@aol.com")
+        user = User(firstName: "Bob", lastName: "Smith", email: "bob@aol.com", userID: UUID(uuidString:"CCB19A72-A4CA-4BF4-8E3F-22B195E906F7")!)
     }
     
     override func viewWillAppear(_ animated: Bool) {

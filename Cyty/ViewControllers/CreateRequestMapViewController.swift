@@ -26,7 +26,7 @@ class CreateRequestMapViewController: UIViewController, CLLocationManagerDelegat
         gestureRecognizer.numberOfTouchesRequired = 1
         mapView.addGestureRecognizer(gestureRecognizer)
         
-        user = User(firstName: "Bob", lastName: "Smith", email: "bob@aol.com")
+        user = User(firstName: "Bob", lastName: "Smith", email: "bob@aol.com", userID: UUID(uuidString:"CCB19A72-A4CA-4BF4-8E3F-22B195E906F7")!)
         
     }
     override func viewWillAppear(_ animated: Bool) {

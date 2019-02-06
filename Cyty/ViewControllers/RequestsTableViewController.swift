@@ -14,15 +14,18 @@ class RequestsTableViewController: UITableViewController, NSFetchedResultsContro
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        user = User(firstName: "Bob", lastName: "Smith", email: "bob@aol.com")
+        user = User(firstName: "Bob", lastName: "Smith", email: "bob@aol.com", userID: UUID(uuidString:"CCB19A72-A4CA-4BF4-8E3F-22B195E906F7")!)
+        jobController.fetchJobRequestsFromServer(with: <#T##UUID#>) { (<#[JobRepresentation]?#>, <#Error?#>) in
+            <#code#>
+        }
     }
 
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
+//    override func numberOfSections(in tableView: UITableView) -> Int {
+//        // #warning Incomplete implementation, return the number of sections
+//        return 0
+//    }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows

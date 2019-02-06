@@ -77,70 +77,81 @@ class JobController {
             }.resume()
     }
     
-//    func fetchJobRequestsFromServer(completion: @escaping (([EntryRepresentation]?, Error?) -> Void) = { _,_ in }) {
-//
-//        let requestURL = baseURL.appendingPathComponent("JobRequests").appendingPathExtension("json")
-//
-//        URLSession.shared.dataTask(with: requestURL) { (data, _, error) in
-//
-//            if let error = error {
-//                NSLog("Error fetching entries from server: \(error)")
-//                completion(nil, error)
-//                return
-//            }
-//
-//            guard let data = data else {
-//                NSLog("No data returned from data task")
-//                completion(nil, NSError())
-//                return
-//            }
-//
-//            do {
-//                let entryReps = try JSONDecoder().decode([String: EntryRepresentation].self, from: data).map({$0.value})
-//                completion(entryReps, nil)
-//            } catch {
-//                NSLog("Error decoding JSON data: \(error)")
-//                completion(nil, error)
-//                return
-//            }
-//            }.resume()
-//    }
-//
-//    // this function takes in an escaping closure
-//    //
-//    func refreshEntriesFromServer(completion: @escaping ((Error?) -> Void) = { _ in }) {
-//        fetchEntriesFromServer { (representations, error) in
-//            if error != nil { return }
-//            guard let representations = representations else { return }
-//            let moc = CoreDataStack.shared.container.newBackgroundContext()
-//            self.updateEntries(with: representations, in: moc, completion: completion)
-//        }
-//    }
-//
-//    private func updateEntries(with representations: [EntryRepresentation],
-//                               in context: NSManagedObjectContext,
-//                               completion: @escaping ((Error?) -> Void) = { _ in }) {
-//
-//        importer = CoreDataImporter(context: context)
-//        importer?.sync(entryRepresentations: representations) { (error) in
-//            if let error = error {
-//                NSLog("Error syncing entries from server: \(error)")
-//                completion(error)
-//                return
-//            }
-//
-//            context.perform {
-//                do {
-//                    try context.save()
-//                    completion(nil)
-//                } catch {
-//                    NSLog("Error saving sync context: \(error)")
-//                    completion(error)
-//                    return
-//                }
-//            }
-//        }
-//    }
+    func fetchJobRequestsFromServer(with userID: UUID, completion: @escaping (([JobRepresentation]?, Error?) -> Void) = { _,_ in }) {
+
+        // build the filtered endpoint request
+        var urlComponents = URLComponents()
+        urlComponents.scheme = "https"
+        urlComponents.host = "new-project-69d95.firebaseio.com"
+        urlComponents.path = "/JobRequests/.json"
+        urlComponents.queryItems = [
+            URLQueryItem(name: "orderBy", value: "requesterID"),
+            URLQueryItem(name: "equalTo", value: userID.uuidString)
+        ]
+        guard let requestURL = urlComponents.url else {
+            print("Error forming URL")
+            return
+        }
+        
+        URLSession.shared.dataTask(with: requestURL) { (data, _, error) in
+
+            if let error = error {
+                NSLog("Error fetching entries from server: \(error)")
+                completion(nil, error)
+                return
+            }
+
+            guard let data = data else {
+                NSLog("No data returned from data task")
+                completion(nil, NSError())
+                return
+            }
+
+            do {
+                let jobRepresentations = try JSONDecoder().decode([String: JobRepresentation].self, from: data).map({$0.value})
+                completion(jobRepresentations, nil)
+            } catch {
+                NSLog("Error decoding JSON data: \(error)")
+                completion(nil, error)
+                return
+            }
+            }.resume()
+    }
+
+    
+    func refreshJobsFromServer(with userID: UUID,completion: @escaping ((Error?) -> Void) = { _ in }) {
+        fetchJobRequestsFromServer(with: userID) { (representations, error) in
+            if error != nil { return }
+            guard let representations = representations else { return }
+            let moc = CoreDataStack.shared.container.newBackgroundContext()
+            self.updateJobRequests(with: representations, in: moc, completion: completion)
+        }
+    }
+
+    private func updateJobRequests(with representations: [JobRepresentation],
+                               in context: NSManagedObjectContext,
+                               completion: @escaping ((Error?) -> Void) = { _ in }) {
+
+        importer = CoreDataImporter(context: context)
+        importer?.sync(entryRepresentations: representations) { (error) in
+            if let error = error {
+                NSLog("Error syncing entries from server: \(error)")
+                completion(error)
+                return
+            }
+
+            context.perform {
+                do {
+                    try context.save()
+                    completion(nil)
+                } catch {
+                    NSLog("Error saving sync context: \(error)")
+                    completion(error)
+                    return
+                }
+            }
+        }
+    }
     
     
     func saveToPersistentStore() {
