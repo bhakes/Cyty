@@ -36,6 +36,7 @@
 		D142ECF6220A2E4000D85F8E /* JobRequest+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D142ECF5220A2E4000D85F8E /* JobRequest+Codable.swift */; };
 		D142ECFA220A660400D85F8E /* JobRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D142ECF9220A660400D85F8E /* JobRepresentation.swift */; };
 		D142ECFC220A6E3200D85F8E /* CoreDataImporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D142ECFB220A6E3200D85F8E /* CoreDataImporter.swift */; };
+		D142ECFE220A9BF100D85F8E /* RequestsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D142ECFD220A9BF100D85F8E /* RequestsTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -70,6 +71,7 @@
 		D142ECF5220A2E4000D85F8E /* JobRequest+Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JobRequest+Codable.swift"; sourceTree = "<group>"; };
 		D142ECF9220A660400D85F8E /* JobRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobRepresentation.swift; sourceTree = "<group>"; };
 		D142ECFB220A6E3200D85F8E /* CoreDataImporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataImporter.swift; sourceTree = "<group>"; };
+		D142ECFD220A9BF100D85F8E /* RequestsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestsTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +148,7 @@
 		D13E14712208B5FE00EE7832 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				D142ECFD220A9BF100D85F8E /* RequestsTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -317,6 +320,7 @@
 				D142ECE92209DCF200D85F8E /* User+Convenience.swift in Sources */,
 				D142ECF4220A2A9200D85F8E /* JobRequest+Convenience.swift in Sources */,
 				D142ECFC220A6E3200D85F8E /* CoreDataImporter.swift in Sources */,
+				D142ECFE220A9BF100D85F8E /* RequestsTableViewCell.swift in Sources */,
 				D13E14BA2208F63A00EE7832 /* JobLocations.swift in Sources */,
 				D13E14C1220958E400EE7832 /* CLLocationManager.swift in Sources */,
 				D13E14A42208E22600EE7832 /* RequestDetailViewController.swift in Sources */,

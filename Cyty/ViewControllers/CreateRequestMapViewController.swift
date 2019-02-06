@@ -85,7 +85,6 @@ class CreateRequestMapViewController: UIViewController, CLLocationManagerDelegat
         currentLocationPin?.coordinate = currentLocation.coordinate
         mapView.addAnnotation(currentLocationPin!)
         
-        print("Current location: \(currentLocation)")
     }
     
     

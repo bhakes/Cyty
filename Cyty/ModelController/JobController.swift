@@ -92,6 +92,7 @@ class JobController {
             print("Error forming URL")
             return
         }
+        print(requestURL)
         
         URLSession.shared.dataTask(with: requestURL) { (data, _, error) in
 
@@ -100,7 +101,7 @@ class JobController {
                 completion(nil, error)
                 return
             }
-
+            
             guard let data = data else {
                 NSLog("No data returned from data task")
                 completion(nil, NSError())
@@ -128,12 +129,12 @@ class JobController {
         }
     }
 
-    private func updateJobRequests(with representations: [JobRepresentation],
+    private func updateJobRequests(with jobRepresentations: [JobRepresentation],
                                in context: NSManagedObjectContext,
                                completion: @escaping ((Error?) -> Void) = { _ in }) {
 
         importer = CoreDataImporter(context: context)
-        importer?.sync(entryRepresentations: representations) { (error) in
+        importer?.sync(jobRepresentations: jobRepresentations) { (error) in
             if let error = error {
                 NSLog("Error syncing entries from server: \(error)")
                 completion(error)
@@ -162,4 +163,5 @@ class JobController {
         }
     }
     
+    private var importer: CoreDataImporter?
 }
