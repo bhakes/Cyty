@@ -74,7 +74,6 @@
         <!--Accept Job View Controller-->
         <scene sceneID="Dlj-7A-taD">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="QyF-Ni-LhN" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="RgG-K3-UHw" customClass="AcceptJobViewController" customModule="Cyty" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="GdH-zE-1oO">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -84,9 +83,12 @@
                                 <rect key="frame" x="80" y="510" width="215" height="48"/>
                                 <color key="backgroundColor" red="0.0" green="0.56031829119999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
-                                <state key="normal" title="Accept Job">
+                                <state key="normal" title="Fulfill Job">
                                     <color key="titleColor" name="selectedMenuItemTextColor" catalog="System" colorSpace="catalog"/>
                                 </state>
+                                <connections>
+                                    <action selector="fulfillButtonClicked:" destination="RgG-K3-UHw" eventType="touchUpInside" id="Vde-kP-lpB"/>
+                                </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Z56-UW-n6N">
                                 <rect key="frame" x="20" y="84" width="335" height="234"/>
@@ -180,6 +182,7 @@
                         <outlet property="titleTextField" destination="VtR-Lw-Y3j" id="NPT-Ie-6RP"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QyF-Ni-LhN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1167" y="2116"/>
         </scene>

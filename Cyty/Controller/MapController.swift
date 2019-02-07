@@ -55,13 +55,16 @@ class MapController {
             return mapView
         }
         
+        let newContext = CoreDataStack.shared.container.newBackgroundContext()
+        
         for job in jobRepresentations {
             
             let lat = job.latitude
             let long = job.longitude
-            guard let jobRequest = JobRequest(jobRepresentation: job) else  { fatalError("could not create job requests from job")}
             
-            let annotation = CustomPointAnnotation(coordinate: CLLocationCoordinate2D(latitude: lat, longitude: long), jobRequest: jobRequest)
+            guard let jobID = job.jobID?.uuidString else  { fatalError("could not create job requests from job")}
+            
+            let annotation = CustomPointAnnotation(coordinate: CLLocationCoordinate2D(latitude: lat, longitude: long), jobID: jobID)
             
             let bounty = job.bounty
             switch bounty {
@@ -81,6 +84,7 @@ class MapController {
             mapView.addAnnotation(annotation)
         }
         mapView.showAnnotations(mapView.annotations, animated: true)
+        
         
         return mapView
         

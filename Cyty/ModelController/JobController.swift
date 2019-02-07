@@ -26,10 +26,17 @@ class JobController {
         saveToPersistentStore()
     }
     
+    func updateJobRequest(for jobRequest: JobRequest) {
+        
+        put(jobRequest: jobRequest)
+        saveToPersistentStore()
+    }
+    
     
     private func put(jobRequest: JobRequest, completion: @escaping ((Error?) -> Void) = { _ in }) {
         
         let jobID = jobRequest.jobID?.uuidString ?? UUID().uuidString
+        
         let requestURL = baseURL.appendingPathComponent("JobRequest").appendingPathComponent(jobID).appendingPathExtension("json")
         var request = URLRequest(url: requestURL)
         request.httpMethod = "PUT"
@@ -167,6 +174,11 @@ class JobController {
             urlComponents.scheme = "https"
             urlComponents.host = "new-project-69d95.firebaseio.com"
             urlComponents.path = "/JobRequest/.json"
+            
+            urlComponents.queryItems = [
+                URLQueryItem(name: "orderBy", value: "\"status\""),
+                URLQueryItem(name: "equalTo", value: "\"Requested\"")
+            ]
             
             return urlComponents
         

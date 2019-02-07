@@ -15,8 +15,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         super.viewDidLoad()
         getLocation()
         mapController = MapController(mapView: mapView)
-        user = User(firstName: "Bob", lastName: "Smith", email: "bob@aol.com")
-        
+        user = User(firstName: "Bob", lastName: "Smith", email: "bob@aol.com", userID: UUID(uuidString:"CCB19A72-A4CA-4BF4-8E3F-22B195E906F7")!)
         
         // set map view
         currentLocationPin = MKPointAnnotation()
@@ -92,7 +91,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         // Pass the selected object to the new view controller.
         guard let destVC = segue.destination as? AcceptJobViewController else {fatalError("Segue should be going to AcceptJob VC but is not")}
         
-        destVC.jobRequest = jobRequestToSegue
+        destVC.jobRequestString = jobRequestStringToSegue
         destVC.currentLocationPin = MKPointAnnotation()
         
     }
@@ -108,7 +107,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     var user: User?
     var pointAnnotation: CustomPointAnnotation!
     var pinAnnotationView: MKPinAnnotationView!
-    var jobRequestToSegue: JobRequest?
+    var jobRequestStringToSegue: String?
     
     
     
@@ -141,7 +140,7 @@ extension MapViewController {
             annotationView?.annotation = customPointAnnotation
             annotationView?.image = UIImage(named: pinCustomImageName)
             annotationView?.canShowCallout = true
-            annotationView?.jobRequest = customPointAnnotation.jobRequest
+            annotationView?.jobID = customPointAnnotation.jobID
             let button = UIButton(type: .contactAdd)
             annotationView?.rightCalloutAccessoryView = button
         }
@@ -155,7 +154,7 @@ extension MapViewController {
         
         guard let view = view as? CustomAnnotationView else {fatalError("couldn't get custom animation")}
         if control == view.rightCalloutAccessoryView {
-            jobRequestToSegue = view.jobRequest
+            jobRequestStringToSegue = view.jobID
             performSegue(withIdentifier: "acceptJobViewController", sender: self)
             
         }

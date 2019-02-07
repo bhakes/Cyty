@@ -26,7 +26,7 @@
 		D13E14BA2208F63A00EE7832 /* JobLocations.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13E14B92208F63A00EE7832 /* JobLocations.swift */; };
 		D13E14BE2209149C00EE7832 /* SampleGeoJSON.geojson in Resources */ = {isa = PBXBuildFile; fileRef = D13E14B42208F1E200EE7832 /* SampleGeoJSON.geojson */; };
 		D13E14C1220958E400EE7832 /* CLLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13E14C0220958E400EE7832 /* CLLocationManager.swift */; };
-		D142ECE92209DCF200D85F8E /* User+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = D142ECE82209DCF200D85F8E /* User+Convenience.swift */; };
+		D142ECE92209DCF200D85F8E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D142ECE82209DCF200D85F8E /* User.swift */; };
 		D142ECED2209E0CC00D85F8E /* CreateRequestMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D142ECEC2209E0CC00D85F8E /* CreateRequestMapViewController.swift */; };
 		D142ECEF220A010F00D85F8E /* CreateRequestsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D142ECEE220A010F00D85F8E /* CreateRequestsDetailViewController.swift */; };
 		D142ECF2220A294000D85F8E /* JobController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D142ECF1220A294000D85F8E /* JobController.swift */; };
@@ -62,7 +62,7 @@
 		D13E14B42208F1E200EE7832 /* SampleGeoJSON.geojson */ = {isa = PBXFileReference; lastKnownFileType = text; path = SampleGeoJSON.geojson; sourceTree = "<group>"; };
 		D13E14B92208F63A00EE7832 /* JobLocations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobLocations.swift; sourceTree = "<group>"; };
 		D13E14C0220958E400EE7832 /* CLLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLLocationManager.swift; sourceTree = "<group>"; };
-		D142ECE82209DCF200D85F8E /* User+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+Convenience.swift"; sourceTree = "<group>"; };
+		D142ECE82209DCF200D85F8E /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		D142ECEC2209E0CC00D85F8E /* CreateRequestMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRequestMapViewController.swift; sourceTree = "<group>"; };
 		D142ECEE220A010F00D85F8E /* CreateRequestsDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRequestsDetailViewController.swift; sourceTree = "<group>"; };
 		D142ECF1220A294000D85F8E /* JobController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobController.swift; sourceTree = "<group>"; };
@@ -171,7 +171,7 @@
 				D13E149C2208CC5900EE7832 /* Cyty.xcdatamodeld */,
 				D13E14AC2208E2C100EE7832 /* CoreDataStack.swift */,
 				D13E14B92208F63A00EE7832 /* JobLocations.swift */,
-				D142ECE82209DCF200D85F8E /* User+Convenience.swift */,
+				D142ECE82209DCF200D85F8E /* User.swift */,
 				D142ECF3220A2A9200D85F8E /* JobRequest+Convenience.swift */,
 				D142ECF5220A2E4000D85F8E /* JobRequest+Codable.swift */,
 				D142ECF9220A660400D85F8E /* JobRepresentation.swift */,
@@ -321,7 +321,7 @@
 				D13E14AD2208E2C100EE7832 /* CoreDataStack.swift in Sources */,
 				D142ECED2209E0CC00D85F8E /* CreateRequestMapViewController.swift in Sources */,
 				D13E14B12208E90A00EE7832 /* Firebase.swift in Sources */,
-				D142ECE92209DCF200D85F8E /* User+Convenience.swift in Sources */,
+				D142ECE92209DCF200D85F8E /* User.swift in Sources */,
 				D142ED04220BB33400D85F8E /* JobRequestStatus.swift in Sources */,
 				D142ECF4220A2A9200D85F8E /* JobRequest+Convenience.swift in Sources */,
 				D142ECFC220A6E3200D85F8E /* CoreDataImporter.swift in Sources */,

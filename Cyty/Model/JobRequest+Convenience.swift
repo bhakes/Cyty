@@ -85,7 +85,7 @@ extension JobRequest {
         let bounty = jobRepresentation.bounty
         let status = jobRepresentation.status
         
-        self.init(jobID: jobID, title: title, jobDescription: jobDescription, bounty: bounty, requesterID: requesterID, requestTime: requestTime, latitude: latitude, longitude: longitude, jobAcceptanceID: jobAcceptanceID, jobFulfillmentID: jobFulfillmentID, jobCancellationID: jobCancellationID, jobVerificationID: jobVerificationID, status: status)
+        self.init(jobID: jobID, title: title, jobDescription: jobDescription, bounty: bounty, requesterID: requesterID, requestTime: requestTime, latitude: latitude, longitude: longitude, jobAcceptanceID: jobAcceptanceID, jobFulfillmentID: jobFulfillmentID, jobCancellationID: jobCancellationID, jobVerificationID: jobVerificationID, status: status, context: CoreDataStack.shared.container.newBackgroundContext())
     }
     
 }

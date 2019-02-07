@@ -15,20 +15,36 @@ class AcceptJobViewController: UIViewController, CLLocationManagerDelegate, MKMa
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        guard let jobRequest = jobRequest else { fatalError("did not pass job request") }
-        let jobRequestCoords = CLLocationCoordinate2D(latitude: jobRequest.latitude, longitude: jobRequest.longitude)
-        titleTextField.text = jobRequest.title
-        jobTypeTextField.text = jobRequest.jobDescription
-        bountyTextField.text = String(jobRequest.bounty)
+        guard let jobRequestString = jobRequestString else { fatalError("did not pass job request") }
+        guard let uuidStringToFetch = UUID(uuidString: jobRequestString) else { fatalError("did create uuid") }
         
-        self.mapController = MapController(mapView: self.mapView)
-        self.mapController?.openMapToUserLocation(mapView: mapView, userLocation: jobRequestCoords)
+        jobController.fetchJobRequestsFromServer(for: .JobFromSingleUUID , with: uuidStringToFetch) { (representations, error) in
+            
+            guard let representations = representations else { return }
+            guard let representation = representations.first else { return }
+            self.jobRep = representation
+         
+            DispatchQueue.main.async {
+                self.mapController = MapController(mapView: self.mapView)
+                self.mapView = self.mapController?.addJobLocationsToMap(jobRepresentations: representations)
+                 let jobRequestCoords = CLLocationCoordinate2D(latitude: representation.latitude, longitude: representation.longitude)
+                
+                
+                self.titleTextField.text = representation.title
+                self.jobTypeTextField.text = representation.jobDescription
+                self.bountyTextField.text = String(representation.bounty)
+                self.mapController?.openMapToUserLocation(mapView: self.mapView, userLocation: jobRequestCoords)
+                
+                self.mapView.delegate = self
+                
+                guard let currentLocationPin = self.currentLocationPin else { return }
+                currentLocationPin.coordinate = jobRequestCoords
+                self.mapView.addAnnotation(currentLocationPin)
+
+            }
+            
+        }
         
-        mapView.delegate = self
-        
-        guard let currentLocationPin = currentLocationPin else { return }
-        currentLocationPin.coordinate = jobRequestCoords
-        mapView.addAnnotation(currentLocationPin)
         user = User(firstName: "Bob", lastName: "Smith", email: "bob@aol.com", userID: UUID(uuidString:"CCB19A72-A4CA-4BF4-8E3F-22B195E906F7")!)
     }
     
@@ -46,7 +62,7 @@ class AcceptJobViewController: UIViewController, CLLocationManagerDelegate, MKMa
     
     // MARK: - @IBAction Methods
     
-    @IBAction func acceptButtonClicked(_ sender: Any) {
+    @IBAction func fulfillButtonClicked(_ sender: Any) {
         
         guard let title = titleTextField.text,
             let bounty = bountyTextField.text,
@@ -55,6 +71,8 @@ class AcceptJobViewController: UIViewController, CLLocationManagerDelegate, MKMa
             bounty != "" else { return }
         
         guard let userID = user?.userID else { fatalError("Lost track of the current user") }
+        jobRep?.jobFulfillmentID = userID
+        jobRep?.status = JobRequestStatus.Fulfilled.rawValue
         
         let newRequest = JobRequest(title: title, jobDescription: "", bounty: Double(bounty) ?? 0.0, requesterID: userID, latitude: coordinates.latitude, longitude: coordinates.longitude)
         
@@ -68,7 +86,8 @@ class AcceptJobViewController: UIViewController, CLLocationManagerDelegate, MKMa
     // MARK: - Properties
     var mapController: MapController?
     let jobController: JobController = JobController()
-    var jobRequest: JobRequest?
+    var jobRequestString: String?
+    var jobRep: JobRepresentation?
     var user: User?
     var currentLocationPin: MKPointAnnotation?
     @IBOutlet weak var mapView: MKMapView!
