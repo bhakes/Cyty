@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 
-class MapViewController: UIViewController, CLLocationManagerDelegate {
+class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -108,27 +108,67 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     
 }
 
-extension MapViewController: MKMapViewDelegate {
+extension MapViewController {
     
     //MARK: - Custom Annotation
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        
         let reuseIdentifier = "pin"
+       
         var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseIdentifier)
+        
+        if annotation is MKUserLocation {
+            return nil
+        }
         
         if annotationView == nil {
             annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: reuseIdentifier)
-            annotationView?.canShowCallout = true
         } else {
             annotationView?.annotation = annotation
         }
         
-        if let customPointAnnotation = annotation as? CustomPointAnnotation {
         
-             annotationView?.image = UIImage(named: customPointAnnotation.pinCustomImageName)
+        
+        
+        if let customPointAnnotation = annotation as? CustomPointAnnotation {
+
+            guard let pinCustomImageName = customPointAnnotation.pinCustomImageName else {
+                fatalError("Error getting pinCustomImageName")
+            }
+
+            annotationView?.image = UIImage(named: pinCustomImageName)
+            annotationView?.canShowCallout = true
+            let button = UIButton(type: .contactAdd)
+            
+            annotationView?.rightCalloutAccessoryView = button
+//            let imageView = UIImageView.init(frame: CGRect(origin: CGPoint(x:0, y:0), size: CGSize(width: 30.0, height: 30.0)))
+//            imageView.image = UIImage(named: "create_new")
+//            annotationView?.leftCalloutAccessoryView = imageView
         }
        
         return annotationView
         
     }
+    
+    // When user taps on the disclosure button you can perform a segue to navigate to another view controller
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        
+        performSegue(withIdentifier: "SegueName", sender: self)
+        
+        
+    }
+    
+    func mapView(mapView: MKMapView, didSelectAnnotationView view: MKAnnotationView) {
+        print("Annotation selected")
+    
+//        if let annotation = view.annotation as? CustomPointAnnotation {
+//
+//        }
+        let imageView = UIImageView.init(frame: CGRect(origin: CGPoint(x:0, y:0), size: CGSize(width: 30.0, height: 30.0)))
+        imageView.image = UIImage(named: "create_new")
+        view.leftCalloutAccessoryView = imageView
+        
+    }
+    
     
 }

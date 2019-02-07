@@ -56,10 +56,13 @@ class MapController {
         }
         
         for job in jobRepresentations {
-            let annotation = CustomPointAnnotation()
             
             let lat = job.latitude
             let long = job.longitude
+            
+            let annotation = CustomPointAnnotation(coordinate: CLLocationCoordinate2D(latitude: lat, longitude: long))
+            
+            
             let bounty = job.bounty
             switch bounty {
             case 0..<8:
@@ -71,10 +74,11 @@ class MapController {
             default:
                 annotation.pinCustomImageName = "pin-green-30p"
             }
-            annotation.subtitle = String(bounty)
-            annotation.coordinate = CLLocationCoordinate2D(latitude: lat, longitude: long)
-            let pinAnnotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "pin")
-            mapView.addAnnotation(pinAnnotationView.annotation!)
+            
+            annotation.title = String(bounty)
+            annotation.subtitle = job.title
+            
+            mapView.addAnnotation(annotation)
         }
         mapView.showAnnotations(mapView.annotations, animated: true)
         

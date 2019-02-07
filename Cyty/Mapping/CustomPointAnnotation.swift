@@ -9,6 +9,14 @@
 import UIKit
 import MapKit
 
-class CustomPointAnnotation: MKPointAnnotation {
-    var pinCustomImageName: String!
+class CustomPointAnnotation: NSObject, MKAnnotation {
+    var coordinate: CLLocationCoordinate2D
+    
+    var pinCustomImageName: String? = ""
+    var title: String? = ""
+    var subtitle: String? = ""
+    
+    init (coordinate: CLLocationCoordinate2D){
+        self.coordinate = coordinate
+    }
 }

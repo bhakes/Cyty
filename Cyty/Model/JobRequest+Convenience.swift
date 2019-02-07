@@ -66,6 +66,28 @@ extension JobRequest {
         self.init(jobID: jobID, title: title, jobDescription: jobDescription, bounty: bounty, requesterID: requesterID, requestTime: requestTime, latitude: latitude, longitude: longitude, jobAcceptanceID: jobAcceptanceID, jobFulfillmentID: jobFulfillmentID, jobCancellationID: jobCancellationID, jobVerificationID: jobVerificationID, status: status)
     }
     
+    convenience init?(jobRepresentation: JobRepresentation) {
+        
+        guard let requesterID = jobRepresentation.requesterID else {fatalError("failed to get rID")}
+        guard let title = jobRepresentation.title else { fatalError("failed to get title") }
+        
+        let jobAcceptanceID = jobRepresentation.jobAcceptanceID
+        let jobCancellationID = jobRepresentation.jobCancellationID
+        let jobDescription = jobRepresentation.jobDescription
+        let jobFulfillmentID = jobRepresentation.jobFulfillmentID
+        let jobID = jobRepresentation.jobID
+        let jobVerificationID = jobRepresentation.jobVerificationID
+        let requestTime = jobRepresentation.requestTime
+        
+        
+        let latitude = jobRepresentation.latitude
+        let longitude  = jobRepresentation.longitude
+        let bounty = jobRepresentation.bounty
+        let status = jobRepresentation.status
+        
+        self.init(jobID: jobID, title: title, jobDescription: jobDescription, bounty: bounty, requesterID: requesterID, requestTime: requestTime, latitude: latitude, longitude: longitude, jobAcceptanceID: jobAcceptanceID, jobFulfillmentID: jobFulfillmentID, jobCancellationID: jobCancellationID, jobVerificationID: jobVerificationID, status: status)
+    }
+    
 }
 
 
