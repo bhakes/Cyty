@@ -32,4 +32,5 @@ struct Appearance {
 extension UIColor {
     static let darkColor = UIColor(red: 0.125, green: 0.125, blue: 0.16, alpha: 1.0)
     static let accentColor = UIColor(red: 182/255, green: 60/255, blue: 58/255, alpha: 1)
+    static let submitColor = UIColor(red: 0/255, green: 143/255, blue: 0/255, alpha: 1)
 }

@@ -16,24 +16,7 @@ class RequestsTableViewController: UITableViewController, NSFetchedResultsContro
         
         user = User(firstName: "Bob", lastName: "Smith", email: "bob@aol.com", userID: UUID(uuidString:"CCB19A72-A4CA-4BF4-8E3F-22B195E906F7")!)
         
-        refresh(nil)
-    }
-    
-    // MARK: - Actions
-    
-    @IBAction func refresh(_ sender: Any?) {
-        
-        guard let userID = user?.userID else {fatalError("error unwrapping userID")}
-        jobController.refreshJobsFromServer(with: userID) { error in
-            if let error = error {
-                NSLog("Error refreshing changes from server: \(error)")
-                return
-            }
-            
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
-        }
+        refreshTable()
     }
 
     // MARK: - Table view data source
@@ -125,7 +108,20 @@ class RequestsTableViewController: UITableViewController, NSFetchedResultsContro
     }
     
     
-    
+    private func refreshTable() {
+        
+        guard let userID = user?.userID else {fatalError("error unwrapping userID")}
+        jobController.refreshJobsFromServer(with: userID) { error in
+            if let error = error {
+                NSLog("Error refreshing changes from server: \(error)")
+                return
+            }
+            
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
+    }
     
     
     // MARK: - Properties

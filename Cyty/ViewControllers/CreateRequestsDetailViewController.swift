@@ -9,15 +9,20 @@
 import UIKit
 import MapKit
 
-class CreateRequestsDetailViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
+class CreateRequestsDetailViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, UITextFieldDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         
-        self.mapController = MapController(mapView: self.mapView, jobLocations: nil)
+        self.mapController = MapController(mapView: self.mapView)
         self.mapController?.openMapToUserLocation(mapView: mapView, userLocation: currentLocationPin?.coordinate)
+        
+        self.titleTextField.delegate = self
+        self.jobTypeTextField.delegate = self
+        self.bountyTextField.delegate = self
+        self.locationTextField.delegate = self
         
         mapView.delegate = self
         
@@ -85,9 +90,29 @@ class CreateRequestsDetailViewController: UIViewController, CLLocationManagerDel
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var submitButton: UIButton!
     @IBOutlet weak var locationTextField: UITextField!
-    @IBOutlet weak var titleTextField: UITextField!
+    @IBOutlet weak var titleTextField: UITextField! {
+        didSet {
+                titleTextField.tag = 1
+            print(titleTextField.tag)
+        }
+    }
     @IBOutlet weak var jobDescriptionTextView: UITextView!
     @IBOutlet weak var jobTypeTextField: UITextField!
     @IBOutlet weak var bountyTextField: UITextField!
+    
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool{
+        self.view.endEditing(true)
+        return false
+    }
+    
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        if titleTextField.tag == 1 && titleTextField.text != "" {
+            submitButton.backgroundColor = UIColor.submitColor
+            submitButton.isEnabled = true
+            return true
+        }
+        return true
+    }
     
 }

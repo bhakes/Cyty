@@ -68,8 +68,4 @@ extension JobRequest {
     
 }
 
-enum JobRequestStatus: String, Codable {
-    case Requested
-    case Accepted
-    case Fulfilled
-}
+

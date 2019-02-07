@@ -16,7 +16,7 @@ class CreateRequestMapViewController: UIViewController, CLLocationManagerDelegat
         super.viewDidLoad()
         
         getLocation()
-        self.mapController = MapController(mapView: self.mapView, jobLocations: nil)
+        self.mapController = MapController(mapView: self.mapView)
         self.mapController?.openMapToUserLocation(mapView: self.mapView, userLocation: locationMgr.location?.coordinate)
         mapView.delegate = self
         
@@ -27,7 +27,7 @@ class CreateRequestMapViewController: UIViewController, CLLocationManagerDelegat
         mapView.addGestureRecognizer(gestureRecognizer)
         
         user = User(firstName: "Bob", lastName: "Smith", email: "bob@aol.com", userID: UUID(uuidString:"CCB19A72-A4CA-4BF4-8E3F-22B195E906F7")!)
-        
+        currentLocationPin = MKPointAnnotation()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -76,16 +76,14 @@ class CreateRequestMapViewController: UIViewController, CLLocationManagerDelegat
         locationMgr.startUpdatingLocation()
     }
     
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        
-        let currentLocation = locations.last! as CLLocation
-        
-        currentLocationPin = MKPointAnnotation()
-
-        currentLocationPin?.coordinate = currentLocation.coordinate
-        mapView.addAnnotation(currentLocationPin!)
-        
-    }
+//    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+//        
+//        let currentLocation = locations.last! as CLLocation
+//
+//        currentLocationPin?.coordinate = currentLocation.coordinate
+//        mapView.addAnnotation(currentLocationPin!)
+//        
+//    }
     
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {

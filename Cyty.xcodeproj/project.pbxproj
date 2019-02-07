@@ -25,7 +25,6 @@
 		D13E14B32208EC2900EE7832 /* MapController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13E14B22208EC2900EE7832 /* MapController.swift */; };
 		D13E14B82208F3DF00EE7832 /* CustomAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13E14B72208F3DF00EE7832 /* CustomAnnotationView.swift */; };
 		D13E14BA2208F63A00EE7832 /* JobLocations.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13E14B92208F63A00EE7832 /* JobLocations.swift */; };
-		D13E14BC2208F72F00EE7832 /* JobLocations+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13E14BB2208F72F00EE7832 /* JobLocations+Extension.swift */; };
 		D13E14BE2209149C00EE7832 /* SampleGeoJSON.geojson in Resources */ = {isa = PBXBuildFile; fileRef = D13E14B42208F1E200EE7832 /* SampleGeoJSON.geojson */; };
 		D13E14C1220958E400EE7832 /* CLLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13E14C0220958E400EE7832 /* CLLocationManager.swift */; };
 		D142ECE92209DCF200D85F8E /* User+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = D142ECE82209DCF200D85F8E /* User+Convenience.swift */; };
@@ -37,6 +36,7 @@
 		D142ECFA220A660400D85F8E /* JobRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D142ECF9220A660400D85F8E /* JobRepresentation.swift */; };
 		D142ECFC220A6E3200D85F8E /* CoreDataImporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D142ECFB220A6E3200D85F8E /* CoreDataImporter.swift */; };
 		D142ECFE220A9BF100D85F8E /* RequestsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D142ECFD220A9BF100D85F8E /* RequestsTableViewCell.swift */; };
+		D142ED04220BB33400D85F8E /* JobRequestStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = D142ED03220BB33400D85F8E /* JobRequestStatus.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,7 +61,6 @@
 		D13E14B42208F1E200EE7832 /* SampleGeoJSON.geojson */ = {isa = PBXFileReference; lastKnownFileType = text; path = SampleGeoJSON.geojson; sourceTree = "<group>"; };
 		D13E14B72208F3DF00EE7832 /* CustomAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAnnotationView.swift; sourceTree = "<group>"; };
 		D13E14B92208F63A00EE7832 /* JobLocations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobLocations.swift; sourceTree = "<group>"; };
-		D13E14BB2208F72F00EE7832 /* JobLocations+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JobLocations+Extension.swift"; sourceTree = "<group>"; };
 		D13E14C0220958E400EE7832 /* CLLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLLocationManager.swift; sourceTree = "<group>"; };
 		D142ECE82209DCF200D85F8E /* User+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+Convenience.swift"; sourceTree = "<group>"; };
 		D142ECEC2209E0CC00D85F8E /* CreateRequestMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRequestMapViewController.swift; sourceTree = "<group>"; };
@@ -72,6 +71,7 @@
 		D142ECF9220A660400D85F8E /* JobRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobRepresentation.swift; sourceTree = "<group>"; };
 		D142ECFB220A6E3200D85F8E /* CoreDataImporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataImporter.swift; sourceTree = "<group>"; };
 		D142ECFD220A9BF100D85F8E /* RequestsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestsTableViewCell.swift; sourceTree = "<group>"; };
+		D142ED03220BB33400D85F8E /* JobRequestStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobRequestStatus.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,11 +168,11 @@
 				D13E149C2208CC5900EE7832 /* Cyty.xcdatamodeld */,
 				D13E14AC2208E2C100EE7832 /* CoreDataStack.swift */,
 				D13E14B92208F63A00EE7832 /* JobLocations.swift */,
-				D13E14BB2208F72F00EE7832 /* JobLocations+Extension.swift */,
 				D142ECE82209DCF200D85F8E /* User+Convenience.swift */,
 				D142ECF3220A2A9200D85F8E /* JobRequest+Convenience.swift */,
 				D142ECF5220A2E4000D85F8E /* JobRequest+Codable.swift */,
 				D142ECF9220A660400D85F8E /* JobRepresentation.swift */,
+				D142ED03220BB33400D85F8E /* JobRequestStatus.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -318,13 +318,13 @@
 				D142ECED2209E0CC00D85F8E /* CreateRequestMapViewController.swift in Sources */,
 				D13E14B12208E90A00EE7832 /* Firebase.swift in Sources */,
 				D142ECE92209DCF200D85F8E /* User+Convenience.swift in Sources */,
+				D142ED04220BB33400D85F8E /* JobRequestStatus.swift in Sources */,
 				D142ECF4220A2A9200D85F8E /* JobRequest+Convenience.swift in Sources */,
 				D142ECFC220A6E3200D85F8E /* CoreDataImporter.swift in Sources */,
 				D142ECFE220A9BF100D85F8E /* RequestsTableViewCell.swift in Sources */,
 				D13E14BA2208F63A00EE7832 /* JobLocations.swift in Sources */,
 				D13E14C1220958E400EE7832 /* CLLocationManager.swift in Sources */,
 				D13E14A42208E22600EE7832 /* RequestDetailViewController.swift in Sources */,
-				D13E14BC2208F72F00EE7832 /* JobLocations+Extension.swift in Sources */,
 				D142ECFA220A660400D85F8E /* JobRepresentation.swift in Sources */,
 				D13E14AF2208E77300EE7832 /* Appearance.swift in Sources */,
 				D13E14A22208E1FF00EE7832 /* JobsTableViewController.swift in Sources */,

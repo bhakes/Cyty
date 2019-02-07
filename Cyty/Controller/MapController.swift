@@ -12,7 +12,7 @@ import CoreLocation
 
 class MapController {
     
-    init(mapView: MKMapView, jobLocations: JobLocations?){
+    init(mapView: MKMapView){
         self.mapView = mapView
     }
     
@@ -43,7 +43,7 @@ class MapController {
         centerMapOnLocation(location: initialLocation)
     }
     
-    func addJobLocationsToMap(jobRequests: [JobRequest]?) -> MKMapView {
+    func addJobLocationsToMap(jobRepresentations: [JobRepresentation]?) -> MKMapView {
         
         // unwrap the map
         guard let mapView = mapView else {
@@ -51,11 +51,11 @@ class MapController {
             fatalError("No MapView to Return")
         }
         
-        guard let jobRequests = jobRequests else {
+        guard let jobRepresentations = jobRepresentations else {
             return mapView
         }
         
-        for job in jobRequests {
+        for job in jobRepresentations {
             let annotation = MKPointAnnotation()
             let lat = job.latitude
             let long = job.longitude

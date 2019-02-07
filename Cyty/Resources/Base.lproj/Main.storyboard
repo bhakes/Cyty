@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Create Request Map View Controller-->
+        <!--Title-->
         <scene sceneID="Avu-Ih-Zx5">
             <objects>
                 <viewController id="imC-7t-GvB" customClass="CreateRequestMapViewController" customModule="Cyty" customModuleProvider="target" sceneMemberID="viewController">
@@ -60,7 +60,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="mtj-X1-He9"/>
                     </view>
-                    <navigationItem key="navigationItem" id="d8h-5U-nhn"/>
+                    <navigationItem key="navigationItem" title="Title" id="kp0-XH-pJy"/>
                     <connections>
                         <outlet property="createButton" destination="lrG-fB-tWH" id="DpQ-xX-fAa"/>
                         <outlet property="mapView" destination="hH6-jV-Frf" id="WQq-s4-AVn"/>
@@ -186,11 +186,11 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KKR-dO-a29">
-                                <rect key="frame" x="127.5" y="550" width="120" height="48"/>
-                                <color key="backgroundColor" red="0.0" green="0.56031829119999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KKR-dO-a29">
+                                <rect key="frame" x="77.5" y="550" width="220" height="48"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="120" id="kuS-z9-BgK"/>
+                                    <constraint firstAttribute="width" constant="220" id="kuS-z9-BgK"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -225,7 +225,7 @@
             </objects>
             <point key="canvasLocation" x="-394.39999999999998" y="2116.1919040479761"/>
         </scene>
-        <!--Map View Controller-->
+        <!--Title-->
         <scene sceneID="cDP-ZR-2Zd">
             <objects>
                 <viewController id="JA7-vo-CiF" customClass="MapViewController" customModule="Cyty" customModuleProvider="target" sceneMemberID="viewController">
@@ -246,7 +246,8 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="SWx-sx-X0z"/>
                     </view>
-                    <navigationItem key="navigationItem" id="gzl-W9-ytK"/>
+                    <navigationItem key="navigationItem" title="Title" id="0I5-CL-zi7"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="mapView" destination="06w-x9-5jK" id="bJR-dp-cgB"/>
                     </connections>
@@ -275,11 +276,11 @@
             </objects>
             <point key="canvasLocation" x="-158" y="-132"/>
         </scene>
-        <!--Item 1-->
+        <!--Map-->
         <scene sceneID="mz4-yd-mg5">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="8Yp-Hn-DOh" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item 1" id="QoA-ou-doo"/>
+                    <tabBarItem key="tabBarItem" title="Map" image="map_marker" selectedImage="map_marker" id="QoA-ou-doo"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="r24-Be-cTJ">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -294,11 +295,11 @@
             </objects>
             <point key="canvasLocation" x="-1166" y="597"/>
         </scene>
-        <!--Item 2-->
+        <!--Create-->
         <scene sceneID="K71-9P-AUy">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="NWk-wa-NIA" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item 2" id="ru0-d5-tdu"/>
+                    <tabBarItem key="tabBarItem" title="Create" image="create_new" selectedImage="create_new" id="ru0-d5-tdu"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="fDL-LE-Aay">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -311,7 +312,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MNl-It-yaU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-393" y="597"/>
+            <point key="canvasLocation" x="-334" y="597"/>
         </scene>
         <!--My Requested Tasks-->
         <scene sceneID="R0d-zr-VYo">
@@ -358,11 +359,11 @@
             </objects>
             <point key="canvasLocation" x="449" y="1393"/>
         </scene>
-        <!--Item-->
+        <!--My Requests-->
         <scene sceneID="6dL-be-8i0">
             <objects>
                 <navigationController id="d3f-iW-YgZ" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="oTH-dp-ly8"/>
+                    <tabBarItem key="tabBarItem" title="My Requests" image="shopping_cart_loaded" selectedImage="shopping_cart_loaded" id="oTH-dp-ly8"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="4us-w6-EiT">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -375,7 +376,7 @@
             </objects>
             <point key="canvasLocation" x="450" y="597"/>
         </scene>
-        <!--My Jobs-->
+        <!--Title-->
         <scene sceneID="Dmg-BI-Sm7">
             <objects>
                 <tableViewController id="JEa-ah-yem" sceneMemberID="viewController">
@@ -398,17 +399,17 @@
                             <outlet property="delegate" destination="JEa-ah-yem" id="AZ7-Us-12X"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="My Jobs" id="Pqi-Hf-UMD"/>
+                    <navigationItem key="navigationItem" title="Title" id="pbq-90-gjk"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PCD-nQ-vNh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1278" y="1405"/>
         </scene>
-        <!--Item-->
+        <!--My Jobs-->
         <scene sceneID="qbS-z6-cKh">
             <objects>
                 <navigationController id="l35-QL-Dqp" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="AwD-ZK-Wi5"/>
+                    <tabBarItem key="tabBarItem" title="My Jobs" image="paper_money" selectedImage="paper_money" id="AwD-ZK-Wi5"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="jFa-FN-c4M">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -422,4 +423,10 @@
             <point key="canvasLocation" x="1278" y="597"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="create_new" width="30" height="30"/>
+        <image name="map_marker" width="30" height="30"/>
+        <image name="paper_money" width="30" height="30"/>
+        <image name="shopping_cart_loaded" width="30" height="30"/>
+    </resources>
 </document>
