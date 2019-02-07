@@ -76,15 +76,6 @@ class CreateRequestMapViewController: UIViewController, CLLocationManagerDelegat
         locationMgr.startUpdatingLocation()
     }
     
-//    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-//        
-//        let currentLocation = locations.last! as CLLocation
-//
-//        currentLocationPin?.coordinate = currentLocation.coordinate
-//        mapView.addAnnotation(currentLocationPin!)
-//        
-//    }
-    
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("Error \(error)")
@@ -126,6 +117,9 @@ class CreateRequestMapViewController: UIViewController, CLLocationManagerDelegat
         } else if gestureRecognizer.state == UIGestureRecognizer.State.ended {
             return
         }
+        
+        createButton.backgroundColor = UIColor.submitColor
+        createButton.isEnabled = true
     }
     
     // MARK: - Layout Methods

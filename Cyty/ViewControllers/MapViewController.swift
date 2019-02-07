@@ -9,14 +9,21 @@
 import UIKit
 import MapKit
 
-class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
+class MapViewController: UIViewController, CLLocationManagerDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         getLocation()
         mapController = MapController(mapView: mapView)
         user = User(firstName: "Bob", lastName: "Smith", email: "bob@aol.com")
+        
+        
+        // set map view
         currentLocationPin = MKPointAnnotation()
+        mapView.delegate = self
+        mapView.mapType = MKMapType.standard
+        mapView.showsUserLocation = true
+    
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -47,16 +54,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         
         locationMgr.delegate = self
         locationMgr.startUpdatingLocation()
+
     }
-    
-//    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-//
-//        let currentLocation = locations.last! as CLLocation
-//
-//        currentLocationPin?.coordinate = currentLocation.coordinate
-//        mapView.addAnnotation(currentLocationPin!)
-//
-//    }
     
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
@@ -85,34 +84,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         }
     }
     
-    // MapViewDelegate
-    
-    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        
-        if annotation is MKUserLocation {
-            //return nil so map view draws "blue dot" for standard user location
-            return MKAnnotationView()
-        }
-        
-        var pinView = mapView.dequeueReusableAnnotationView(withIdentifier: "pin")
-        
-        if pinView == nil {
-            pinView = MKAnnotationView(annotation: annotation, reuseIdentifier: "pin")
-            pinView!.canShowCallout = true
-            //Set your image here
-            pinView!.image = UIImage(named: "mappin")
-            
-            var calloutButton = UIButton(type: .detailDisclosure) as! UIButton
-            pinView!.rightCalloutAccessoryView = calloutButton
-        }
-        else {
-            pinView!.annotation = annotation
-        }
-        
-        return pinView
-    }
-    
-    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -130,6 +101,34 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     var jobController: JobController = JobController()
     @IBOutlet weak var mapView: MKMapView!
     var user: User?
+    var pointAnnotation: CustomPointAnnotation!
+    var pinAnnotationView: MKPinAnnotationView!
     
+    
+    
+}
+
+extension MapViewController: MKMapViewDelegate {
+    
+    //MARK: - Custom Annotation
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        let reuseIdentifier = "pin"
+        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseIdentifier)
+        
+        if annotationView == nil {
+            annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: reuseIdentifier)
+            annotationView?.canShowCallout = true
+        } else {
+            annotationView?.annotation = annotation
+        }
+        
+        if let customPointAnnotation = annotation as? CustomPointAnnotation {
+        
+             annotationView?.image = UIImage(named: customPointAnnotation.pinCustomImageName)
+        }
+       
+        return annotationView
+        
+    }
     
 }

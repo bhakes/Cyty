@@ -22,7 +22,6 @@ class CreateRequestsDetailViewController: UIViewController, CLLocationManagerDel
         self.titleTextField.delegate = self
         self.jobTypeTextField.delegate = self
         self.bountyTextField.delegate = self
-        self.locationTextField.delegate = self
         
         mapView.delegate = self
         
@@ -37,21 +36,7 @@ class CreateRequestsDetailViewController: UIViewController, CLLocationManagerDel
     }
 
     // MARK: - Movable Pin Methods
-    
-    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        if annotation is MKPointAnnotation {
-            let currentLocationPin = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "currentLocationPin")
-            
-            currentLocationPin.pinTintColor = .purple
-            currentLocationPin.isDraggable = true
-            currentLocationPin.canShowCallout = true
-            currentLocationPin.animatesDrop = true
-            
-            return currentLocationPin
-        }
-        
-        return nil
-    }
+
     
     // MARK: - Layout Methods
     
@@ -89,7 +74,6 @@ class CreateRequestsDetailViewController: UIViewController, CLLocationManagerDel
     var currentLocationPin: MKPointAnnotation?
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var submitButton: UIButton!
-    @IBOutlet weak var locationTextField: UITextField!
     @IBOutlet weak var titleTextField: UITextField! {
         didSet {
                 titleTextField.tag = 1
