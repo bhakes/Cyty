@@ -12,11 +12,19 @@ import MapKit
 class CustomPointAnnotation: NSObject, MKAnnotation {
     var coordinate: CLLocationCoordinate2D
     
+    var jobRequest: JobRequest
     var pinCustomImageName: String? = ""
     var title: String? = ""
     var subtitle: String? = ""
     
-    init (coordinate: CLLocationCoordinate2D){
+    init (coordinate: CLLocationCoordinate2D, jobRequest: JobRequest){
         self.coordinate = coordinate
+        self.jobRequest = jobRequest
     }
 }
+
+class CustomAnnotationView: MKAnnotationView{
+    var jobRequest: JobRequest?
+    
+}
+

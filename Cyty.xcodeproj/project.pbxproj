@@ -37,6 +37,7 @@
 		D142ECFE220A9BF100D85F8E /* RequestsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D142ECFD220A9BF100D85F8E /* RequestsTableViewCell.swift */; };
 		D142ED04220BB33400D85F8E /* JobRequestStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = D142ED03220BB33400D85F8E /* JobRequestStatus.swift */; };
 		D142ED06220C003800D85F8E /* CustomPointAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D142ED05220C003800D85F8E /* CustomPointAnnotation.swift */; };
+		D142ED0C220CADE800D85F8E /* AcceptJobViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D142ED0B220CADE800D85F8E /* AcceptJobViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -72,6 +73,7 @@
 		D142ECFD220A9BF100D85F8E /* RequestsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestsTableViewCell.swift; sourceTree = "<group>"; };
 		D142ED03220BB33400D85F8E /* JobRequestStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobRequestStatus.swift; sourceTree = "<group>"; };
 		D142ED05220C003800D85F8E /* CustomPointAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPointAnnotation.swift; sourceTree = "<group>"; };
+		D142ED0B220CADE800D85F8E /* AcceptJobViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptJobViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +143,7 @@
 				D13E14A92208E27600EE7832 /* ListViewController.swift */,
 				D142ECEC2209E0CC00D85F8E /* CreateRequestMapViewController.swift */,
 				D142ECEE220A010F00D85F8E /* CreateRequestsDetailViewController.swift */,
+				D142ED0B220CADE800D85F8E /* AcceptJobViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -313,6 +316,7 @@
 				D142ECEF220A010F00D85F8E /* CreateRequestsDetailViewController.swift in Sources */,
 				D13E14AA2208E27600EE7832 /* ListViewController.swift in Sources */,
 				D13E145E2208B59000EE7832 /* AppDelegate.swift in Sources */,
+				D142ED0C220CADE800D85F8E /* AcceptJobViewController.swift in Sources */,
 				D13E14A02208E1D600EE7832 /* RequestsTableViewController.swift in Sources */,
 				D13E14AD2208E2C100EE7832 /* CoreDataStack.swift in Sources */,
 				D142ECED2209E0CC00D85F8E /* CreateRequestMapViewController.swift in Sources */,

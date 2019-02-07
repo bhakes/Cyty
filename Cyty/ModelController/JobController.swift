@@ -169,9 +169,22 @@ class JobController {
             urlComponents.path = "/JobRequest/.json"
             
             return urlComponents
+        
+        
+        case .JobFromSingleUUID :
+            var urlComponents = URLComponents()
+            urlComponents.scheme = "https"
+            urlComponents.host = "new-project-69d95.firebaseio.com"
+            urlComponents.path = "/JobRequest/.json"
+            
+            urlComponents.queryItems = [
+                URLQueryItem(name: "orderBy", value: "\"jobID\""),
+                URLQueryItem(name: "equalTo", value: "\"\(userID.uuidString)\"")
+            ]
+        
+            return urlComponents
         }
-        
-        
+
         
     }
     
@@ -190,4 +203,5 @@ class JobController {
 enum FetchType: String, Codable {
     case JobsRequestedByUser
     case JobsAvailableForUser
+    case JobFromSingleUUID
 }

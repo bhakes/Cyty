@@ -85,11 +85,16 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     }
     
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+        guard let destVC = segue.destination as? AcceptJobViewController else {fatalError("Segue should be going to AcceptJob VC but is not")}
+        
+        destVC.jobRequest = jobRequestToSegue
+        destVC.currentLocationPin = MKPointAnnotation()
+        
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent }
@@ -103,6 +108,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     var user: User?
     var pointAnnotation: CustomPointAnnotation!
     var pinAnnotationView: MKPinAnnotationView!
+    var jobRequestToSegue: JobRequest?
     
     
     
@@ -114,36 +120,30 @@ extension MapViewController {
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         
         let reuseIdentifier = "pin"
-       
-        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseIdentifier)
+        
+        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseIdentifier) as? CustomAnnotationView
         
         if annotation is MKUserLocation {
             return nil
         }
         
         if annotationView == nil {
-            annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: reuseIdentifier)
+            annotationView = CustomAnnotationView(annotation: annotation, reuseIdentifier: reuseIdentifier)
         } else {
             annotationView?.annotation = annotation
         }
         
-        
-        
-        
         if let customPointAnnotation = annotation as? CustomPointAnnotation {
-
+    
             guard let pinCustomImageName = customPointAnnotation.pinCustomImageName else {
                 fatalError("Error getting pinCustomImageName")
             }
-
+            annotationView?.annotation = customPointAnnotation
             annotationView?.image = UIImage(named: pinCustomImageName)
             annotationView?.canShowCallout = true
+            annotationView?.jobRequest = customPointAnnotation.jobRequest
             let button = UIButton(type: .contactAdd)
-            
             annotationView?.rightCalloutAccessoryView = button
-//            let imageView = UIImageView.init(frame: CGRect(origin: CGPoint(x:0, y:0), size: CGSize(width: 30.0, height: 30.0)))
-//            imageView.image = UIImage(named: "create_new")
-//            annotationView?.leftCalloutAccessoryView = imageView
         }
        
         return annotationView
@@ -153,17 +153,18 @@ extension MapViewController {
     // When user taps on the disclosure button you can perform a segue to navigate to another view controller
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         
-        performSegue(withIdentifier: "SegueName", sender: self)
+        guard let view = view as? CustomAnnotationView else {fatalError("couldn't get custom animation")}
+        if control == view.rightCalloutAccessoryView {
+            jobRequestToSegue = view.jobRequest
+            performSegue(withIdentifier: "acceptJobViewController", sender: self)
+            
+        }
         
         
     }
     
     func mapView(mapView: MKMapView, didSelectAnnotationView view: MKAnnotationView) {
-        print("Annotation selected")
-    
-//        if let annotation = view.annotation as? CustomPointAnnotation {
-//
-//        }
+
         let imageView = UIImageView.init(frame: CGRect(origin: CGPoint(x:0, y:0), size: CGSize(width: 30.0, height: 30.0)))
         imageView.image = UIImage(named: "create_new")
         view.leftCalloutAccessoryView = imageView

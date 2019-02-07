@@ -59,9 +59,9 @@ class MapController {
             
             let lat = job.latitude
             let long = job.longitude
+            guard let jobRequest = JobRequest(jobRepresentation: job) else  { fatalError("could not create job requests from job")}
             
-            let annotation = CustomPointAnnotation(coordinate: CLLocationCoordinate2D(latitude: lat, longitude: long))
-            
+            let annotation = CustomPointAnnotation(coordinate: CLLocationCoordinate2D(latitude: lat, longitude: long), jobRequest: jobRequest)
             
             let bounty = job.bounty
             switch bounty {
