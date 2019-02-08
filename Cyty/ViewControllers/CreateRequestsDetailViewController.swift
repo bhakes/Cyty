@@ -77,7 +77,6 @@ class CreateRequestsDetailViewController: UIViewController, CLLocationManagerDel
     @IBOutlet weak var titleTextField: UITextField! {
         didSet {
                 titleTextField.tag = 1
-            print(titleTextField.tag)
         }
     }
     @IBOutlet weak var jobDescriptionTextView: UITextView!

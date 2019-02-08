@@ -138,7 +138,6 @@ class CreateRequestMapViewController: UIViewController, CLLocationManagerDelegat
     override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent }
     
     var mapController: MapController?
-    var jobLocations: JobLocations?
     var currentLocationPin: MKPointAnnotation?
     @IBOutlet weak var mapView: MKMapView!
     let locationMgr = CLLocationManager()

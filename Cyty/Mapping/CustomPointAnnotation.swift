@@ -10,8 +10,8 @@ import UIKit
 import MapKit
 
 class CustomPointAnnotation: NSObject, MKAnnotation {
-    var coordinate: CLLocationCoordinate2D
     
+    var coordinate: CLLocationCoordinate2D
     var jobID: String
     var pinCustomImageName: String? = ""
     var title: String? = ""

@@ -64,19 +64,29 @@ class AcceptJobViewController: UIViewController, CLLocationManagerDelegate, MKMa
     
     @IBAction func fulfillButtonClicked(_ sender: Any) {
         
-        guard let title = titleTextField.text,
-            let bounty = bountyTextField.text,
-            let coordinates = currentLocationPin?.coordinate,
-            title != "",
-            bounty != "" else { return }
-        
         guard let userID = user?.userID else { fatalError("Lost track of the current user") }
         jobRep?.jobFulfillmentID = userID
         jobRep?.status = JobRequestStatus.Fulfilled.rawValue
         
-        let newRequest = JobRequest(title: title, jobDescription: "", bounty: Double(bounty) ?? 0.0, requesterID: userID, latitude: coordinates.latitude, longitude: coordinates.longitude)
-        
-        jobController.createJobRequest(for: newRequest)
+//        let newRequest = JobRequest(title: title, jobDescription: "", bounty: Double(bounty) ?? 0.0, requesterID: userID, latitude: coordinates.latitude, longitude: coordinates.longitude)
+        guard let jobRep = jobRep else {fatalError("no job rep")}
+        let context = CoreDataStack.shared.mainContext
+        let importer = CoreDataImporter(context: context)
+        importer.sync(jobRepresentations: [jobRep]) { (error) in
+            if let error = error {
+                NSLog("Error syncing entries: \(error)")
+                return
+            }
+            
+            context.perform {
+                do {
+                    try context.save()
+                } catch {
+                    NSLog("Error saving sync: \(error)")
+                    return
+                }
+            }
+        }
         
         titleTextField.text = ""
         navigationController?.popViewController(animated: true)

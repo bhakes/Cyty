@@ -211,9 +211,3 @@ class JobController {
     
     private var importer: CoreDataImporter?
 }
-
-enum FetchType: String, Codable {
-    case JobsRequestedByUser
-    case JobsAvailableForUser
-    case JobFromSingleUUID
-}
