@@ -52,8 +52,8 @@ class CreateRequestsDetailViewController: UIViewController, CLLocationManagerDel
         guard let title = titleTextField.text,
             let bounty = bountyTextField.text,
             let coordinates = currentLocationPin?.coordinate,
-            title != "",
-            bounty != "" else { return }
+            !title.isEmpty,
+            !bounty.isEmpty else { return }
        
         guard let userID = user?.userID else { fatalError("Lost track of the current user") }
         

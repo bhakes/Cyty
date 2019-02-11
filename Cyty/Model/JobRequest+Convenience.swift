@@ -88,7 +88,7 @@ extension JobRequest {
         self.init(jobID: jobID, title: title, jobDescription: jobDescription, bounty: bounty, requesterID: requesterID, requestTime: requestTime, latitude: latitude, longitude: longitude, jobAcceptanceID: jobAcceptanceID, jobFulfillmentID: jobFulfillmentID, jobCancellationID: jobCancellationID, jobVerificationID: jobVerificationID, status: status, context: CoreDataStack.shared.container.newBackgroundContext())
     }
     
-    convenience init?(jobRepresentation: JobRepresentation, uuid: UUID, status: String, jobFulfillmentID: UUID) {
+    convenience init?(jobRepresentation: JobRepresentation, uuid: UUID) {
         
         guard let requesterID = jobRepresentation.requesterID else {fatalError("failed to get rID")}
         guard let title = jobRepresentation.title else { fatalError("failed to get title") }

@@ -8,8 +8,9 @@
 
 import UIKit
 import MapKit
+import CoreData
 
-class AcceptJobViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, UITextFieldDelegate {
+class AcceptJobViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, UITextFieldDelegate, NSFetchedResultsControllerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +28,7 @@ class AcceptJobViewController: UIViewController, CLLocationManagerDelegate, MKMa
             DispatchQueue.main.async {
                 self.mapController = MapController(mapView: self.mapView)
                 self.mapView = self.mapController?.addJobLocationsToMap(jobRepresentations: representations)
-                 let jobRequestCoords = CLLocationCoordinate2D(latitude: representation.latitude, longitude: representation.longitude)
+                let jobRequestCoords = CLLocationCoordinate2D(latitude: representation.latitude, longitude: representation.longitude)
                 
                 
                 self.titleTextField.text = representation.title
@@ -64,29 +65,34 @@ class AcceptJobViewController: UIViewController, CLLocationManagerDelegate, MKMa
     
     @IBAction func fulfillButtonClicked(_ sender: Any) {
         
-        guard let userID = user?.userID else { fatalError("Lost track of the current user") }
-        jobRep?.jobFulfillmentID = userID
-        jobRep?.status = JobRequestStatus.Fulfilled.rawValue
+        guard let userID = user?.userID else { fatalError("Failed to unwrap the current user") }
+        guard var jobRep = jobRep else { fatalError("Failed to unwrap current jobRep") }
+        guard let jobIDString = jobRep.jobID?.uuidString else { fatalError("Failed to unwrap the current jobRep") }
         
-//        let newRequest = JobRequest(title: title, jobDescription: "", bounty: Double(bounty) ?? 0.0, requesterID: userID, latitude: coordinates.latitude, longitude: coordinates.longitude)
-        guard let jobRep = jobRep else {fatalError("no job rep")}
-        let context = CoreDataStack.shared.mainContext
-        let importer = CoreDataImporter(context: context)
-        importer.sync(jobRepresentations: [jobRep]) { (error) in
-            if let error = error {
-                NSLog("Error syncing entries: \(error)")
-                return
-            }
-            
-            context.perform {
-                do {
-                    try context.save()
-                } catch {
-                    NSLog("Error saving sync: \(error)")
-                    return
-                }
-            }
+        
+        
+        let fetchRequest: NSFetchRequest<JobRequest> = JobRequest.fetchRequest()
+        let predicate = NSPredicate(format: "jobID == %@", jobIDString)
+        fetchRequest.predicate = predicate
+        
+        let moc = CoreDataStack.shared.mainContext
+        var jobRequests: [JobRequest] = []
+        do {
+            jobRequests = try moc.fetch(fetchRequest)
+        } catch {
+            print("Failed to perform fetch on Core Data")
         }
+        
+        guard let job = jobRequests.first else { fatalError("No jobs available my that ID") }
+        job.status = JobRequestStatus.Fulfilled.rawValue
+        job.jobFulfillmentID = userID
+        jobController.createJobRequest(for: job)
+        do {
+            try moc.save()
+        } catch {
+            print("Failed to perform fetch on Core Data")
+        }
+        
         
         titleTextField.text = ""
         navigationController?.popViewController(animated: true)
@@ -107,5 +113,4 @@ class AcceptJobViewController: UIViewController, CLLocationManagerDelegate, MKMa
     @IBOutlet weak var bountyTextField: UITextField!
     var uuidStringOfJobToAccept: String?
     
-
 }

@@ -30,7 +30,8 @@ func ==(lhs: JobRepresentation, rhs: JobRequest) -> Bool {
         rhs.bounty == lhs.bounty &&
         rhs.requesterID == lhs.requesterID &&
         rhs.requestTime == lhs.requestTime &&
-        rhs.jobID == lhs.jobID
+        rhs.jobID == lhs.jobID &&
+        rhs.status == lhs.status
 }
 
 func ==(lhs: JobRequest, rhs: JobRepresentation) -> Bool {

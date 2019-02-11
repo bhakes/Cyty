@@ -41,6 +41,7 @@ class CoreDataImporter {
                 for jobRep in jobRepresentations {
                     guard let jobID = jobRep.jobID?.uuidString else { return }
                     
+                    
                     if let jobRequest = coreDataDictionary[jobID], jobRequest != jobRep {
                         self.update(jobRequest: jobRequest, with: jobRep)
                     } else if coreDataDictionary[jobID] == nil {
@@ -76,6 +77,7 @@ class CoreDataImporter {
         jobRequest.requesterID = jobRep.requesterID
         jobRequest.requestTime = jobRep.requestTime
         jobRequest.title = jobRep.title
+        jobRequest.status = jobRep.status
     }
     
     let context: NSManagedObjectContext

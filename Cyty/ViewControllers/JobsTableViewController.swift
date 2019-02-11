@@ -98,15 +98,4 @@ class JobsTableViewController: UITableViewController, NSFetchedResultsController
     
     var user: User?
     
-//    lazy var fetchedResultsController: NSFetchedResultsController<User> = {
-////        let frc = CoreDataStack.shared.makeNewFetchedResultsController()
-////        if let priority = currentPriority {
-////            let predicate = NSPredicate(format: "priority == %@", priority.rawValue)
-////            frc.fetchRequest.predicate = predicate
-////        }
-////        frc.delegate = self
-////        try? frc.performFetch()
-////        return frc
-//    }()
-    
 }

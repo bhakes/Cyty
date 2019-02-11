@@ -50,6 +50,7 @@ class MapController {
             print("Did not safely unwrap the map")
             fatalError("No MapView to Return")
         }
+        mapView.removeAnnotations(mapView.annotations)
         
         guard let jobRepresentations = jobRepresentations else {
             return mapView

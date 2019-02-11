@@ -111,7 +111,7 @@ class RequestsTableViewController: UITableViewController, NSFetchedResultsContro
     private func refreshTable() {
         
         guard let userID = user?.userID else {fatalError("error unwrapping userID")}
-        jobController.refreshJobsFromServer(with: userID) { error in
+        jobController.refreshJobsFromServer(fetchType: .JobFromSingleUUID, with: userID) { error in
             if let error = error {
                 NSLog("Error refreshing changes from server: \(error)")
                 return

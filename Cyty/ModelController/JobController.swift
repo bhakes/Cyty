@@ -13,26 +13,43 @@ let baseURL = URL(string: "https://new-project-69d95.firebaseio.com/")!
 
 class JobController {
     
+    // MARK: - CRUD Methods for combined Core Data and Server Updating
+    
+    // Create Job Request
     func createJobRequest(for jobRequest: JobRequest) {
         
+        // server create
         put(jobRequest: jobRequest)
+        // core data save
         saveToPersistentStore()
     }
     
-    func deleteJobRequest(for jobRequest: JobRequest) {
-        
-        CoreDataStack.shared.mainContext.delete(jobRequest)
-        deleteEntryFromServer(jobRequest: jobRequest)
-        saveToPersistentStore()
-    }
-    
+    // Update Job Request
     func updateJobRequest(for jobRequest: JobRequest) {
         
+        // update on server
         put(jobRequest: jobRequest)
         saveToPersistentStore()
+        
     }
     
+    // Delete Job Request
+    func deleteJobRequest(for jobRequest: JobRequest) {
+        
+        deleteJobRequestFromServer(jobRequest: jobRequest) {_ in
+            
+            DispatchQueue.main.async {
+                CoreDataStack.shared.mainContext.delete(jobRequest)
+                self.saveToPersistentStore()
+            }
+            
+        }
+        
+    }
     
+    // MARK: - CRUD Methods for updating the server
+    
+    // Create Job Requests on Server
     private func put(jobRequest: JobRequest, completion: @escaping ((Error?) -> Void) = { _ in }) {
         
         let jobID = jobRequest.jobID?.uuidString ?? UUID().uuidString
@@ -60,8 +77,8 @@ class JobController {
             }.resume()
     }
     
-    
-    func deleteEntryFromServer(jobRequest: JobRequest, completion: @escaping ((Error?) -> Void) = { _ in }) {
+    // Delete Job Requests on Server
+    func deleteJobRequestFromServer(jobRequest: JobRequest, completion: @escaping ((Error?) -> Void) = { _ in }) {
         
         guard let jobID = jobRequest.jobID else {
             NSLog("JobID is nil")
@@ -84,6 +101,7 @@ class JobController {
             }.resume()
     }
     
+    // Read Job Updates From Server
     func fetchJobRequestsFromServer(for fetchType: FetchType, with userID: UUID, completion: @escaping (([JobRepresentation]?, Error?) -> Void) = { _,_ in }) {
 
         // build the filtered endpoint request
@@ -120,9 +138,9 @@ class JobController {
             }.resume()
     }
 
-    
-    func refreshJobsFromServer(with userID: UUID,completion: @escaping ((Error?) -> Void) = { _ in }) {
-        fetchJobRequestsFromServer(for: .JobsRequestedByUser, with: userID) { (representations, error) in
+    // read jobs from server and overwrite core data
+    func refreshJobsFromServer(fetchType: FetchType, with uuidOfFetch: UUID, completion: @escaping ((Error?) -> Void) = { _ in }) {
+        fetchJobRequestsFromServer(for: fetchType, with: uuidOfFetch) { (representations, error) in
             if error != nil { return }
             guard let representations = representations else { return }
             let moc = CoreDataStack.shared.container.newBackgroundContext()
@@ -130,7 +148,8 @@ class JobController {
         }
     }
 
-    private func updateJobRequests(with jobRepresentations: [JobRepresentation],
+    // take data received from server and update core data with it
+    func updateJobRequests(with jobRepresentations: [JobRepresentation],
                                in context: NSManagedObjectContext,
                                completion: @escaping ((Error?) -> Void) = { _ in }) {
 
@@ -155,6 +174,22 @@ class JobController {
         }
     }
     
+    
+    
+    func saveToPersistentStore() {
+        do {
+            try CoreDataStack.shared.mainContext.save()
+        } catch {
+            NSLog("Error saving managed object context: \(error)")
+        }
+    }
+    
+    private var importer: CoreDataImporter?
+}
+
+extension JobController {
+    
+    // URL Component Creation
     func createURLComponents(for fetchType: FetchType, with userID: UUID) -> URLComponents{
         switch fetchType {
         case .JobsRequestedByUser :
@@ -168,7 +203,7 @@ class JobController {
                 URLQueryItem(name: "equalTo", value: "\"\(userID.uuidString)\"")
             ]
             return urlComponents
-        
+            
         case .JobsAvailableForUser :
             var urlComponents = URLComponents()
             urlComponents.scheme = "https"
@@ -181,8 +216,8 @@ class JobController {
             ]
             
             return urlComponents
-        
-        
+            
+            
         case .JobFromSingleUUID :
             var urlComponents = URLComponents()
             urlComponents.scheme = "https"
@@ -193,21 +228,10 @@ class JobController {
                 URLQueryItem(name: "orderBy", value: "\"jobID\""),
                 URLQueryItem(name: "equalTo", value: "\"\(userID.uuidString)\"")
             ]
-        
+            
             return urlComponents
         }
-
+        
         
     }
-    
-    
-    func saveToPersistentStore() {
-        do {
-            try CoreDataStack.shared.mainContext.save()
-        } catch {
-            NSLog("Error saving managed object context: \(error)")
-        }
-    }
-    
-    private var importer: CoreDataImporter?
 }

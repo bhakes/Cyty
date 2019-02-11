@@ -76,6 +76,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
                 
             }
             DispatchQueue.main.async {
+                self.mapView.removeAnnotations(self.mapView.annotations)
                 self.mapView = self.mapController?.addJobLocationsToMap(jobRepresentations: self.jobRepresentations)
                 self.mapController?.openMapToUserLocation(mapView: self.mapView, userLocation: self.locationMgr.location?.coordinate)
             }
@@ -108,8 +109,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     var pointAnnotation: CustomPointAnnotation!
     var pinAnnotationView: MKPinAnnotationView!
     var jobRequestStringToSegue: String?
-    
-    
     
 }
 
